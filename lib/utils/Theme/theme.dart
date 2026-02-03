@@ -35,12 +35,13 @@ class UAppTheme {
     primaryColor: UColors.primary,
     disabledColor: UColors.grey,
     scaffoldBackgroundColor: UColors.black,
-      chipTheme: UChipTheme.darkChipTheme,
-    appBarTheme: UAppTheme.darkTheme,
+    chipTheme: UChipTheme.darkChipTheme,
+    appBarTheme: UAppBarTheme.darkAppBarTheme,
     checkboxTheme: UCheckboxTheme.darkCheckboxTheme,
     elevatedButtonTheme: UElevatedButtonTheme.darkElevatedButtonTheme,
     outlinedButtonTheme: UOutlinedButtonTheme.darkOutlinedButtonTheme,
     bottomSheetTheme: UBottomSheetTheme.darkBottomSheetTheme,
-    inputDecorationTheme: UTextFormFieldTheme.darkInputDecorationTheme
+    inputDecorationTheme: UTextFormFieldTheme.darkInputDecorationTheme,
   );
+
 }
