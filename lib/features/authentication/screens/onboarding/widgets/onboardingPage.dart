@@ -1,16 +1,14 @@
-import 'package:e_commerce/utils/constants/Sizes.dart';
 import 'package:e_commerce/utils/helpers/device_helpers.dart';
 import 'package:flutter/material.dart';
 import 'package:lottie/lottie.dart';
 
-import '../../../../../utils/constants/images.dart';
-import '../../../../../utils/constants/text.dart';
+
 
 class Onboardingpage extends StatelessWidget {
   final String title;
   final String subtitle;
   final String animation;
-  const Onboardingpage({
+   Onboardingpage({
     super.key,
     required this.title,
     required this.subtitle,
@@ -20,7 +18,7 @@ class Onboardingpage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Padding(
-      padding:  EdgeInsets.only(right: USizes.defaultSpace,left: USizes.defaultSpace,top:UDeviceHelpers.getAppBarHeight()),
+      padding:  EdgeInsets.only(top:UDeviceHelpers.getAppBarHeight()),
       child: Column(
         mainAxisAlignment: MainAxisAlignment.center,
         crossAxisAlignment: CrossAxisAlignment.center,
