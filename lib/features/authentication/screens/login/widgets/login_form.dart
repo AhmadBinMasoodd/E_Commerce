@@ -1,5 +1,6 @@
 import 'package:e_commerce/features/authentication/screens/forget_password/forget_password.dart';
 import 'package:e_commerce/features/authentication/screens/signup/signup.dart';
+import 'package:e_commerce/navigation_menu.dart';
 import 'package:flutter/material.dart';
 import 'package:iconsax/iconsax.dart';
 import 'package:get/get.dart';
@@ -51,7 +52,7 @@ class ULoginForm extends StatelessWidget {
         SizedBox(height: USizes.spaceBtwSections),
 
         ///sign in
-        UElevatedButton(onPressed: () {}, child: Text(UTexts.signIn)),
+        UElevatedButton(onPressed: () =>Get.to(()=>NavigationMenu()), child: Text(UTexts.signIn)),
         SizedBox(height: USizes.spaceBtwItems / 2),
 
         ///create account
