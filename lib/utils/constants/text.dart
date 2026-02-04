@@ -19,7 +19,7 @@ class UTexts{
   static const String  createAccount="Create Account";
   static const String  orSignInWith="Or Sign In With";
 
-
+  /// sign up screen
   static const String  signUnTitle="Let's Get You Registered";
   static const String  firstName="First Name";
   static const String  lastName="Last Name";
@@ -28,6 +28,29 @@ class UTexts{
   static const String  privacyPolicy="Privacy Policy";
   static const String  and="and";
   static const String  termOfUse="Term of use";
-  static const  String orSignUpWith="Or Sign up with";
+  static const String orSignUpWith="Or Sign up with";
+
+
+  ///forget password screen
+  static const String forgetPasswordSubtitle="No worries! Enter your registered email address, and we’ll help you reset your password";
+  static const String submit="Submit";
+
+ ///forget email screen sent screen
+  static const String forgetEmailSentTitle="Password Reset Email Sent";
+  static const String forgetEmailSentSubtitle="We’ve sent a password reset link to your email. Please check your inbox and follow the instructions to reset your password";
+
+  ///verify email screen;
+  static const String emailSentTitle="";
+  static const String emailSentSubtitle="";
+  static const String vContinue="Continue";
+  static const String done="Done";
+  static const String resendEmail="Resend Email";
+
+  /// account created successfully screen;
+  static const String accountCreatedTitle="Your account successfully created";
+  static const String accountCreatedSubtitle="Congratulations! Your account has been successfully created. You can now explore all the amazing features, start personalizing your experience, and enjoy seamless access to our services. Let’s get started!";
+
+
+
 
 }
