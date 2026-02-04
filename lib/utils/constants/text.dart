@@ -40,8 +40,8 @@ class UTexts{
   static const String forgetEmailSentSubtitle="We’ve sent a password reset link to your email. Please check your inbox and follow the instructions to reset your password";
 
   ///verify email screen;
-  static const String emailSentTitle="";
-  static const String emailSentSubtitle="";
+  static const String verifyEmailTitle="Verify your email address!";
+  static const String verifyEmailSubtitle="We’ve sent a verification link to your email. Please check your inbox and click the link to verify your account";
   static const String vContinue="Continue";
   static const String done="Done";
   static const String resendEmail="Resend Email";
