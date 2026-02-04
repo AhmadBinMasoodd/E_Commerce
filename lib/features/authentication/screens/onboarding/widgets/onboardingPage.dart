@@ -4,11 +4,11 @@ import 'package:lottie/lottie.dart';
 
 
 
-class Onboardingpage extends StatelessWidget {
+class OnboardingPage extends StatelessWidget {
   final String title;
   final String subtitle;
   final String animation;
-   Onboardingpage({
+   const OnboardingPage({
     super.key,
     required this.title,
     required this.subtitle,
