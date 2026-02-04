@@ -9,15 +9,25 @@ class UTexts{
   static const String onboardingSubtitle3='Get your favorite items delivered to your doorstep, anytime, anywhere';
 
 
-  static const loginTile="Shop Smarter";
-  static const loginSubtitle="Log in to Access Exclusive Deals and Simplify Your Shopping";
-  static const email="Email";
-  static const password="Password";
-  static const rememberMe="Remember Me";
-  static const forgetPassword="Forget Password";
-  static const signIn="Sign In";
-  static const createAccount="Create Account";
-  static const orSignInWith="Or Sign In With";
+  static const String loginTile="Shop Smarter";
+  static const String  loginSubtitle="Log in to Access Exclusive Deals and Simplify Your Shopping";
+  static const String  email="Email";
+  static const String password="Password";
+  static const  String rememberMe="Remember Me";
+  static const String  forgetPassword="Forget Password";
+  static const String  signIn="Sign In";
+  static const String  createAccount="Create Account";
+  static const String  orSignInWith="Or Sign In With";
 
+
+  static const String  signUnTitle="Let's Get You Registered";
+  static const String  firstName="First Name";
+  static const String  lastName="Last Name";
+  static const String  phoneNumber="Phone Number";
+  static const String  iAgreeTo="I agree to";
+  static const String  privacyPolicy="Privacy Policy";
+  static const String  and="and";
+  static const String  termOfUse="Term of use";
+  static const  String orSignUpWith="Or Sign up with";
 
 }
