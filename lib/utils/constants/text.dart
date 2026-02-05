@@ -52,5 +52,7 @@ class UTexts{
 
   static const String homeAppbarTitle='Good Morning';
   static const String homeAppbarSubtitle="Unknown Pro";
+  static const String homeAppbarSearchbarTitle='Search in Store';
+  static const String homeCategories='Popular Categories';
 
 }

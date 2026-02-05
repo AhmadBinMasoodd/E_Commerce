@@ -28,7 +28,7 @@ class UCartCounterIcon extends StatelessWidget {
             height: 18,
             width: 18,
             decoration: BoxDecoration(
-              color: isDark ? UColors.dark : Colors.white,
+              color: isDark ? UColors.white : UColors.dark,
               shape: BoxShape.circle,
             ),
             child: Center(
@@ -36,7 +36,7 @@ class UCartCounterIcon extends StatelessWidget {
                 '2',
                 style: Theme.of(context).textTheme.labelLarge!.apply(
                   fontSizeFactor: 0.8,
-                  color: isDark ? UColors.dark : Colors.white,
+                  color: isDark ? UColors.dark : UColors.white,
                 ),
               ),
             ),
