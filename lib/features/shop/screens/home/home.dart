@@ -1,8 +1,7 @@
+import 'package:e_commerce/features/shop/screens/home/widgets/home_appbar.dart';
 import 'package:e_commerce/features/shop/screens/home/widgets/primary_header_container.dart';
 
 import 'package:flutter/material.dart';
-
-
 
 class HomeScreen extends StatelessWidget {
   const HomeScreen({super.key});
@@ -13,13 +12,12 @@ class HomeScreen extends StatelessWidget {
       body: UPrimaryHeaderContainer(
         child: Column(
           children: [
-
+            UHomeAppbar(),
           ],
         ),
       ),
     );
   }
 }
-
 
 

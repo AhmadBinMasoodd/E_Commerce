@@ -1,4 +1,5 @@
 import 'package:e_commerce/common/widgets/custom_shapes/rounded_edges_container.dart';
+import 'package:e_commerce/utils/constants/Sizes.dart';
 import 'package:flutter/material.dart';
 
 import '../../../../../common/widgets/custom_shapes/circular_container.dart';
@@ -22,8 +23,8 @@ class UPrimaryHeaderContainer extends StatelessWidget {
               top: -150,
               right: -160,
               child: UCircularContainer(
-                height: UDeviceHelpers.getAppBarHeight()*0.4,
-                width: UDeviceHelpers.getScreenWidth(context)*0.4,
+                height: USizes.homePrimaryHeaderHeight,
+                width: USizes.homePrimaryHeaderHeight,
                 backgroundColor: UColors.white.withValues(alpha: 0.1),
               ),
             ),
@@ -31,8 +32,8 @@ class UPrimaryHeaderContainer extends StatelessWidget {
                 top: 50,
                 right: -250,
                 child: UCircularContainer(
-                  height: UDeviceHelpers.getAppBarHeight()*0.4,
-                  width: UDeviceHelpers.getScreenWidth(context)*0.4,
+                  height:USizes.homePrimaryHeaderHeight,
+                  width: USizes.homePrimaryHeaderHeight,
                   backgroundColor: UColors.white.withValues(alpha: 0.1),
                 )
             ),

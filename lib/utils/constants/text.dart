@@ -50,7 +50,7 @@ class UTexts{
   static const String accountCreatedTitle="Your account successfully created";
   static const String accountCreatedSubtitle="Congratulations! Your account has been successfully created. You can now explore all the amazing features, start personalizing your experience, and enjoy seamless access to our services. Let’s get started!";
 
-
-
+  static const String homeAppbarTitle='Good Morning';
+  static const String homeAppbarSubtitle="Unknown Pro";
 
 }
