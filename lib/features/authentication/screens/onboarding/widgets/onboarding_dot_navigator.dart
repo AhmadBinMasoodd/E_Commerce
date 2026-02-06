@@ -10,14 +10,14 @@ class OnBoardingDotNavigator extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final conntroller=OnBoardingController.instance;
+    final controller=OnBoardingController.instance;
     return Positioned(
       bottom: UDeviceHelpers.getBottomNavigationBarHeight()*4,
       left: UDeviceHelpers.getScreenWidth(context)/3,
       right: UDeviceHelpers.getScreenWidth(context)/3,
       child: SmoothPageIndicator(
-        controller: conntroller.pageController,
-        onDotClicked: conntroller.dotNavigatorClick,
+        controller: controller.pageController,
+        onDotClicked: controller.dotNavigatorClick,
         count: 3,
         effect:ExpandingDotsEffect(
           dotHeight: 6.0,

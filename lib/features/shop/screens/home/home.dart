@@ -1,36 +1,62 @@
+import 'package:e_commerce/features/shop/controllers/home/home_controller.dart';
 import 'package:e_commerce/features/shop/screens/home/widgets/home_appbar.dart';
 import 'package:e_commerce/features/shop/screens/home/widgets/home_categories.dart';
 import 'package:e_commerce/features/shop/screens/home/widgets/primary_header_container.dart';
+import 'package:e_commerce/features/shop/screens/home/widgets/promo_slider.dart';
 import 'package:e_commerce/utils/constants/Sizes.dart';
-
+import 'package:e_commerce/utils/constants/images.dart';
 
 import 'package:flutter/material.dart';
 
 import '../../../../common/widgets/text_fields/search_bar.dart';
-
+import 'package:get/get.dart';
 class HomeScreen extends StatelessWidget {
   const HomeScreen({super.key});
 
   @override
   Widget build(BuildContext context) {
+    final controller=Get.put(HomeController());
     return Scaffold(
-      body: Stack(
+      body: Column(
+        ///Upper part
         children: [
-          SizedBox(height: USizes.homePrimaryHeaderHeight + 10),
-          UPrimaryHeaderContainer(
-            child: Column(
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: [
-                UHomeAppbar(),
-                SizedBox(height: USizes.spaceBtwSections),
-                UHomeCategories()
+          Stack(
+            children: [
+              SizedBox(height: USizes.homePrimaryHeaderHeight + 10),
+              UPrimaryHeaderContainer(
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    UHomeAppbar(),
+                    SizedBox(height: USizes.spaceBtwSections),
+                    UHomeCategories(),
+                  ],
+                ),
+              ),
+              USearchedBar(),
+            ],
+          ),
+
+          SizedBox(height: USizes.defaultSpace),
+
+          ///////Lower part
+          Padding(
+            padding: EdgeInsets.all(USizes.defaultSpace),
+            child: UPromoSlider(
+              banners: [
+                UImages.homeBanner1,
+                UImages.homeBanner2,
+                UImages.homeBanner3,
+                UImages.homeBanner4,
+                UImages.homeBanner5,
               ],
             ),
           ),
-          USearchedBar(),
         ],
       ),
     );
   }
 }
+
+
 

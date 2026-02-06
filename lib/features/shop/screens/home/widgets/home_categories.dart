@@ -1,4 +1,3 @@
-import 'package:e_commerce/utils/helpers/helpers_function.dart';
 import 'package:flutter/material.dart';
 
 import '../../../../../common/widgets/imageText/vertical_image_text.dart';
