@@ -26,7 +26,7 @@ class UColors{
   static const  Color success=Color(0xFF388E2C);
   static const Color warning=Color(0xFFF57C00);
   static const  Color info=Color(0xFF1976D2);
-
+  static const Color yellow=Colors.yellow;
   //Neural Shades
   static const  Color black=Color(0xFF232323);
   static const  Color darkerGrey=Color(0xFF4F4F4F);
