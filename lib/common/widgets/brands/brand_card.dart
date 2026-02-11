@@ -15,7 +15,7 @@ class UBrandCard extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return URoundedContainer(
-      width:USizes.brandCardWidth ,
+      height: USizes.brandCardHeight,
       showBorder: true,
       padding: EdgeInsets.all(USizes.sm),
       backgroundColor: Colors.transparent,
@@ -24,18 +24,22 @@ class UBrandCard extends StatelessWidget {
         mainAxisSize: MainAxisSize.min,
         children: [
           Flexible(child: URoundedImage(imageUrl: UImages.bagsIcon)),
-          SizedBox(width: USizes.spaceBtwItems,),
+          SizedBox(width: USizes.spaceBtwItems/2,),
 
-          Flexible(
+          Expanded(
             child: Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              mainAxisSize: MainAxisSize.min,
               children: [
                 UBrandTitleWithVerifyIcon(
                   title: 'Bata',
                   brandTextSize: TextSizes.large,
                 ),
+
                 Text(
                   '172 products',
-                  style: Theme.of(context).textTheme.labelMedium,
+                  maxLines: 1,
+                  style: Theme.of(context).textTheme.labelSmall,
                   overflow: TextOverflow.ellipsis,
                 ),
               ],

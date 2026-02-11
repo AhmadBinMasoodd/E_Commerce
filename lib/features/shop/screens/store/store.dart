@@ -31,10 +31,7 @@ class Store extends StatelessWidget {
                         padding: const EdgeInsets.symmetric(horizontal: USizes.defaultSpace),
                         child: Column(
                           children: [
-
-
                             USectionHeading(category: 'Brands', onPressed: () {}),
-
                             //brand card
                             SizedBox(
                               height: USizes.brandCardHeight,

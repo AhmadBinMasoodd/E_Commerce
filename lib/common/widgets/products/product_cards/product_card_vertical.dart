@@ -79,7 +79,6 @@ class UProductCardVertical extends StatelessWidget {
                   SizedBox(height: USizes.spaceBtwItems / 2),
                   UBrandTitleWithVerifyIcon(
                     title: 'Bata',
-
                   ),
                 ],
               ),
