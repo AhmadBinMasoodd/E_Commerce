@@ -8,14 +8,15 @@ import '../../../../../utils/helpers/device_helpers.dart';
 
 class UPrimaryHeaderContainer extends StatelessWidget {
   const UPrimaryHeaderContainer({
-    super.key, required this.child,
+    super.key, required this.child, required this.height,
   });
   final Widget child;
+  final double height;
   @override
   Widget build(BuildContext context) {
     return URoundedEdgesContainer(
       child: Container(
-        height: UDeviceHelpers.getScreenHeight(context)*0.4,
+        height: height,
         color: UColors.primary,
         child: Stack(
           children: [
@@ -23,7 +24,7 @@ class UPrimaryHeaderContainer extends StatelessWidget {
               top: -150,
               right: -160,
               child: UCircularContainer(
-                height: USizes.homePrimaryHeaderHeight,
+                height: height,
                 width: USizes.homePrimaryHeaderHeight,
                 backgroundColor: UColors.white.withValues(alpha: 0.1),
               ),

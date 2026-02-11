@@ -8,19 +8,19 @@ class URoundedContainer extends StatelessWidget {
     this.width,
     this.height,
     this.radius=USizes.cardRadiusLg,
-    required this.child,
+    this.child,
     this.showBorder=false,
     this.borderColor=UColors.borderPrimary,
     this.backgroundColor=UColors.white,
-    required this.padding,
+    this.padding,
      this.margin=const EdgeInsets.all(16)
   });
   final double? width,height;
   final double radius;
-  final Widget child;
+  final Widget? child;
   final bool showBorder;
   final Color borderColor,backgroundColor;
-  final EdgeInsetsGeometry padding,margin;
+  final EdgeInsetsGeometry? padding,margin;
   @override
   Widget build(BuildContext context) {
     return Container(

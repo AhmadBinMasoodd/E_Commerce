@@ -57,7 +57,7 @@ class USizes{
 
   // Card Sizes
   static const double homePrimaryHeaderHeight = 320.0; // 320
-  static const double storePrimaryHeaderHeight = 170.0; // 170
+  static const double storePrimaryHeaderHeight = 150.0; // 170
   static const double profilePrimaryHeaderHeight = 170.0; // 170
 
   static const double brandCardWidth = 170.0; // 170

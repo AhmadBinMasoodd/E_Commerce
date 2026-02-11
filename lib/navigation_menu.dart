@@ -1,4 +1,5 @@
 import 'package:e_commerce/features/shop/screens/home/home.dart';
+import 'package:e_commerce/features/shop/screens/store/store.dart';
 import 'package:e_commerce/utils/constants/colors.dart';
 import 'package:e_commerce/utils/helpers/helpers_function.dart';
 import 'package:flutter/material.dart';
@@ -37,5 +38,5 @@ class NavigationMenu extends StatelessWidget {
 
 class NavigatorController extends GetxController {
   RxInt selectedIndex = 0.obs;
-  List<Widget> screens=[HomeScreen(),Container(color: Colors.black,),Container(color: Colors.green,),Container(color: Colors.blue,)];
+  List<Widget> screens=[HomeScreen(),Store(),Container(color: Colors.green,),Container(color: Colors.blue,)];
 }

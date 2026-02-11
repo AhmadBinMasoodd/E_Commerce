@@ -8,6 +8,7 @@ import 'package:iconsax/iconsax.dart';
 import '../../../../utils/constants/Sizes.dart';
 import '../../../styles/shadow.dart';
 import '../../../../utils/constants/images.dart';
+import '../../texts/brand_title_with_verify_icon.dart';
 import '../../texts/product_price_text.dart';
 import '../../texts/product_title_text.dart';
 
@@ -76,49 +77,37 @@ class UProductCardVertical extends StatelessWidget {
                 children: [
                   UProductTitleText(title: 'Blue Bata Shoes', smallSize: true),
                   SizedBox(height: USizes.spaceBtwItems / 2),
-                  Row(
-                    children: [
-                      Text(
-                        'Bata',
-                        style: Theme.of(context).textTheme.labelMedium,
-                        maxLines: 1,
-                        overflow: TextOverflow.ellipsis,
-                      ),
-                      SizedBox(width: USizes.xs),
-                      Icon(
-                        Iconsax.verify,
-                        color: UColors.primary,
-                        size: USizes.iconXs,
-                      ),
-                    ],
-                  ),
-                  Spacer(),
+                  UBrandTitleWithVerifyIcon(
+                    title: 'Bata',
 
-                  Row(
-                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                    children: [
-                      Padding(
-                        padding: const EdgeInsets.only(left: USizes.sm),
-                        child: UProductPriceText(price: '76'),
-                      ),
-                      Container(
-                        width: USizes.iconLg * 1.2,
-                        height: USizes.iconLg * 1.2,
-                        decoration: BoxDecoration(
-                          color: UColors.primary,
-                          borderRadius: BorderRadius.only(
-                            bottomRight: Radius.circular(
-                              USizes.productImageRadius,
-                            ),
-                            topLeft: Radius.circular(USizes.cardRadiusMd),
-                          ),
-                        ),
-                        child: Icon(Iconsax.add, color: UColors.light),
-                      ),
-                    ],
                   ),
                 ],
               ),
+            ),
+            Spacer(),
+
+            Row(
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              children: [
+                Padding(
+                  padding: const EdgeInsets.only(left: USizes.sm),
+                  child: UProductPriceText(price: '76'),
+                ),
+                Container(
+                  width: USizes.iconLg * 1.2,
+                  height: USizes.iconLg * 1.2,
+                  decoration: BoxDecoration(
+                    color: UColors.primary,
+                    borderRadius: BorderRadius.only(
+                      bottomRight: Radius.circular(
+                        USizes.productImageRadius,
+                      ),
+                      topLeft: Radius.circular(USizes.cardRadiusMd),
+                    ),
+                  ),
+                  child: Icon(Iconsax.add, color: UColors.light),
+                ),
+              ],
             ),
           ],
         ),
@@ -126,3 +115,5 @@ class UProductCardVertical extends StatelessWidget {
     );
   }
 }
+
+
