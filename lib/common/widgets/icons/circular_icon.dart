@@ -34,7 +34,7 @@ class UCircularIcon extends StatelessWidget {
               : dark
               ? UColors.dark.withValues(alpha: 0.9)
               : UColors.light.withValues(alpha: 0.9),
-
+          borderRadius: BorderRadius.circular(1000),
         ),
         child: IconButton(
             onPressed: onPressed, icon: Icon(icon, color: color, size: size,)),

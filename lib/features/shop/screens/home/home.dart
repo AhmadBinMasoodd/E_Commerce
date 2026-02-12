@@ -67,6 +67,10 @@ class HomeScreen extends StatelessWidget {
                     onPressed: () {},
                   ),
                   SizedBox(height: USizes.spaceBtwItems),
+
+                  ///vertical product card
+
+
                   UGridLayout(
                     itemCount: 10,
                     itemBuilder: (context, index) {
