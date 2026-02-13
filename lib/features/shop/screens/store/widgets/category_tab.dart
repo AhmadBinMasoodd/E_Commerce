@@ -42,12 +42,12 @@ class UCategoryTab extends StatelessWidget {
               USectionHeading(category: 'You might like', onPressed: () {}),
               //grid layout products
               UGridLayout(
-                itemCount: 4,
+                itemCount: 8,
                 itemBuilder: (context, index) {
                   return UProductCardVertical();
                 },
               ),
-              SizedBox(height: USizes.spaceBtwSections,)
+              //SizedBox(height: USizes.spaceBtwSections,)
             ],
           ),
         ),

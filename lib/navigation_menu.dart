@@ -6,6 +6,8 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:iconsax/iconsax.dart';
 
+import 'features/shop/screens/wishlist/wishlist.dart';
+
 class NavigationMenu extends StatelessWidget {
   const NavigationMenu({super.key});
 
@@ -37,6 +39,7 @@ class NavigationMenu extends StatelessWidget {
 }
 
 class NavigatorController extends GetxController {
+  static NavigatorController get instance=>Get.find();
   RxInt selectedIndex = 0.obs;
-  List<Widget> screens=[HomeScreen(),Store(),Container(color: Colors.green,),Container(color: Colors.blue,)];
+  List<Widget> screens=[HomeScreen(),Store(),WishlistScreen(),Container(color: Colors.blue,)];
 }

@@ -22,7 +22,7 @@ class UProductCardVertical extends StatelessWidget {
     return GestureDetector(
       onTap: (){},
       child: Container(
-        width: 180,
+        height: 180,
         padding: EdgeInsets.all(1),
         decoration: BoxDecoration(
           boxShadow: UShadow.verticalProductShadow,
@@ -39,7 +39,7 @@ class UProductCardVertical extends StatelessWidget {
               child: Stack(
                 ///thumbnail
                 children: [
-                  URoundedImage(imageUrl: UImages.productImage15),
+                  Center(child: URoundedImage(imageUrl: UImages.productImage15)),
       
                 //  discount tag
                   Positioned(
