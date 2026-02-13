@@ -1,0 +1,20 @@
+import 'package:flutter/material.dart';
+
+import '../../../utils/constants/images.dart';
+import 'circular_image.dart';
+class UserProfileLogo extends StatelessWidget {
+  const UserProfileLogo({
+    super.key,
+  });
+
+  @override
+  Widget build(BuildContext context) {
+    return UCircularImage(
+      image: UImages.profileLogo,
+      height: 120.0,
+      width: 120.0,
+      borderWidth: 5,
+      padding: 0,
+    );
+  }
+}

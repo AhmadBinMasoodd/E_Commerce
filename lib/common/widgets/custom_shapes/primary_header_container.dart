@@ -2,8 +2,8 @@ import 'package:e_commerce/common/widgets/custom_shapes/rounded_edges_container.
 import 'package:e_commerce/utils/constants/Sizes.dart';
 import 'package:flutter/material.dart';
 
-import '../../../../../common/widgets/custom_shapes/circular_container.dart';
-import '../../../../../utils/constants/colors.dart';
+import 'circular_container.dart';
+import '../../../utils/constants/colors.dart';
 
 class UPrimaryHeaderContainer extends StatelessWidget {
   const UPrimaryHeaderContainer({
