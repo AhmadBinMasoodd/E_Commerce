@@ -2,12 +2,14 @@ import 'package:e_commerce/utils/constants/enum.dart';
 import 'package:flutter/material.dart';
 
 class UBrandTitleText extends StatelessWidget {
-  const UBrandTitleText({super.key,
+  const UBrandTitleText({
+    super.key,
     this.color,
     required this.title,
-     this.maxLines=1,
-    this.textAlign=TextAlign.center,
-    this.brandTextSize=TextSizes.small});
+    this.maxLines = 1,
+    this.textAlign = TextAlign.center,
+    this.brandTextSize = TextSizes.small,
+  });
 
   final Color? color;
   final String title;
@@ -24,8 +26,10 @@ class UBrandTitleText extends StatelessWidget {
       overflow: TextOverflow.ellipsis,
       style: brandTextSize == TextSizes.small
           ? Theme.of(context).textTheme.labelMedium!.apply(color: color)
-          :  brandTextSize == TextSizes.small? Theme.of(context).textTheme.bodyLarge!.apply(color: color)
-          : brandTextSize==TextSizes.large? Theme.of(context).textTheme.titleLarge!.apply(color: color)
+          : brandTextSize == TextSizes.medium
+          ? Theme.of(context).textTheme.bodyLarge!.apply(color: color)
+          : brandTextSize == TextSizes.large
+          ? Theme.of(context).textTheme.titleLarge!.apply(color: color)
           : Theme.of(context).textTheme.bodyMedium!.apply(color: color),
     );
   }

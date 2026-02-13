@@ -8,25 +8,29 @@ import '../../../utils/constants/colors.dart';
 
 class UBrandTitleWithVerifyIcon extends StatelessWidget {
   const UBrandTitleWithVerifyIcon({
-    super.key, required this.title,
-     this.maxLines=1,
+    super.key,
+    required this.title,
+    this.maxLines = 1,
     this.textColor,
-    this.iconColor=UColors.primary,
-     this.brandTextSize=TextSizes.small,
-    this.textAlign=TextAlign.center,
+    this.iconColor = UColors.primary,
+    this.brandTextSize = TextSizes.small,
+    this.textAlign = TextAlign.center,
   });
+
   final String title;
   final int maxLines;
-  final Color? textColor,iconColor;
+  final Color? textColor, iconColor;
   final TextSizes brandTextSize;
   final TextAlign? textAlign;
+
   @override
   Widget build(BuildContext context) {
     return Row(
       mainAxisSize: MainAxisSize.min,
       children: [
         Flexible(
-          child: UBrandTitleText(title: title,
+          child: UBrandTitleText(
+            title: title,
             maxLines: maxLines,
             brandTextSize: brandTextSize,
             color: textColor,
@@ -34,11 +38,7 @@ class UBrandTitleWithVerifyIcon extends StatelessWidget {
           ),
         ),
         SizedBox(width: USizes.xs),
-        Icon(
-          Iconsax.verify5,
-          color: UColors.primary,
-          size: USizes.iconXs,
-        ),
+        Icon(Iconsax.verify5, color: UColors.primary, size: USizes.iconXs),
       ],
     );
   }

@@ -15,38 +15,44 @@ class UBrandCard extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return URoundedContainer(
-      height: USizes.brandCardHeight,
+      width: USizes.brandCardWidth,
       showBorder: true,
       padding: EdgeInsets.all(USizes.sm),
       backgroundColor: Colors.transparent,
       child: Row(
-        crossAxisAlignment: CrossAxisAlignment.start,
-        mainAxisSize: MainAxisSize.min,
         children: [
-          Flexible(child: URoundedImage(imageUrl: UImages.bagsIcon)),
+          //brand image
+          Flexible(child: URoundedImage(
+              imageUrl: UImages.bagsIcon,
+            backgroundColor: Colors.transparent,
+          )
+          ),
           SizedBox(width: USizes.spaceBtwItems/2,),
+          ///brand name and verify icon
 
+          ///right portion
           Expanded(
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               mainAxisSize: MainAxisSize.min,
               children: [
+                //brand name verify icon
                 UBrandTitleWithVerifyIcon(
                   title: 'Bata',
                   brandTextSize: TextSizes.large,
                 ),
-
-                Text(
-                  '172 products',
-                  maxLines: 1,
-                  style: Theme.of(context).textTheme.labelSmall,
+                //product text
+                Text('172 products',
+                  style: Theme.of(context).textTheme.labelMedium,
                   overflow: TextOverflow.ellipsis,
-                ),
+                )
               ],
             ),
-          )
+          ),
+
         ],
       ),
     );
+
   }
 }

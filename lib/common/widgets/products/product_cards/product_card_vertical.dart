@@ -90,6 +90,7 @@ class UProductCardVertical extends StatelessWidget {
             //
       
             Spacer(),
+            ///product price and add button
             Row(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
