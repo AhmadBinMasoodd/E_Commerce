@@ -1,10 +1,11 @@
 import 'package:e_commerce/common/widgets/custom_shapes/rounded_container.dart';
 import 'package:e_commerce/common/widgets/icons/circular_icon.dart';
+import 'package:e_commerce/features/shop/screens/product_details/product_details.dart';
 import 'package:e_commerce/utils/constants/colors.dart';
 import 'package:e_commerce/utils/helpers/helpers_function.dart';
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 import 'package:iconsax/iconsax.dart';
-
 import '../../../../utils/constants/Sizes.dart';
 import '../../../styles/shadow.dart';
 import '../../../../utils/constants/images.dart';
@@ -20,7 +21,7 @@ class UProductCardVertical extends StatelessWidget {
   Widget build(BuildContext context) {
     bool dark = UHelperFunctions.isDarkMode(context);
     return GestureDetector(
-      onTap: (){},
+      onTap: ()=>Get.to(()=>ProductDetailsScreen()),
       child: Container(
         height: 180,
         padding: EdgeInsets.all(1),
@@ -40,7 +41,6 @@ class UProductCardVertical extends StatelessWidget {
                 ///thumbnail
                 children: [
                   Center(child: URoundedImage(imageUrl: UImages.productImage15)),
-      
                 //  discount tag
                   Positioned(
                     top: -5,
@@ -69,14 +69,8 @@ class UProductCardVertical extends StatelessWidget {
                 ],
               ),
             ),
-      
-      
-      
             SizedBox(height: USizes.spaceBtwItems/2),
-      
-      
             Padding(
-      
               padding: const EdgeInsets.only(left: USizes.sm),
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
@@ -111,11 +105,6 @@ class UProductCardVertical extends StatelessWidget {
                 )
               ],
             ),
-      
-      
-      
-      
-      
           ],
         ),
       ),
