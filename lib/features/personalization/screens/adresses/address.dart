@@ -1,6 +1,5 @@
 import 'package:e_commerce/common/styles/padding.dart';
 import 'package:e_commerce/common/widgets/appbar/appbar.dart';
-import 'package:e_commerce/common/widgets/custom_shapes/rounded_container.dart';
 import 'package:e_commerce/features/personalization/screens/adresses/add_new_address.dart';
 import 'package:e_commerce/features/personalization/screens/adresses/widgets/single_address.dart';
 import 'package:e_commerce/utils/constants/Sizes.dart';
