@@ -1,10 +1,12 @@
 import 'package:e_commerce/common/widgets/texts/section_heading.dart';
+import 'package:e_commerce/features/personalization/screens/adresses/address.dart';
 import 'package:e_commerce/features/personalization/screens/profile/widgets/profile_primary_header.dart';
 import 'package:e_commerce/features/personalization/screens/profile/widgets/settings_menu_tile.dart';
 import 'package:e_commerce/features/personalization/screens/profile/widgets/user_profile_tile.dart';
 import 'package:e_commerce/utils/constants/Sizes.dart';
 import 'package:flutter/material.dart';
 import 'package:iconsax/iconsax.dart';
+import 'package:get/get.dart';
 
 class ProfileScreen extends StatelessWidget {
   const ProfileScreen({super.key});
@@ -37,16 +39,21 @@ class ProfileScreen extends StatelessWidget {
                     title: 'My Addresses',
                     subtitle: 'Set shopping delivery addresses',
                     icon: Icon(Iconsax.safe_home),
+                    onTap: () {
+                      Get.to(() => AddressScreen());
+                    },
                   ),
                   SettingMenuTile(
                     title: 'My Cart',
                     subtitle: 'Add, remove products and move to checkout',
                     icon: Icon(Iconsax.shopping_cart),
+                    onTap: () {},
                   ),
                   SettingMenuTile(
                     title: 'Orders',
                     subtitle: 'In progress and completed orders',
                     icon: Icon(Iconsax.bag_tick),
+                    onTap: () {},
                   ),
                   SizedBox(height: USizes.spaceBtwSections),
 
