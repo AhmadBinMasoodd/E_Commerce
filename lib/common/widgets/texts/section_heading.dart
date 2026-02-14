@@ -4,12 +4,12 @@ class USectionHeading extends StatelessWidget {
   const USectionHeading({
     super.key,
     required this.category,
-    required this.onPressed,
+    this.onPressed,
     this.buttonTitle="View all",
     this.showActionButton=true
   });
   final String category,buttonTitle;
-  final VoidCallback onPressed;
+  final VoidCallback? onPressed;
   final bool showActionButton;
   @override
   Widget build(BuildContext context) {
