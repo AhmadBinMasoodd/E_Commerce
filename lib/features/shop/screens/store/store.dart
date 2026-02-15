@@ -1,9 +1,12 @@
+import 'package:e_commerce/common/styles/padding.dart';
 import 'package:e_commerce/common/widgets/texts/section_heading.dart';
+import 'package:e_commerce/features/shop/screens/brands/brands.dart';
 import 'package:e_commerce/features/shop/screens/store/widgets/category_tab.dart';
 import 'package:e_commerce/features/shop/screens/store/widgets/store_primary_header.dart';
 import 'package:e_commerce/utils/constants/Sizes.dart';
 
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 
 import '../../../../common/widgets/appbar/tabbar.dart';
 import '../../../../common/widgets/brands/brand_card.dart';
@@ -40,7 +43,7 @@ class Store extends StatelessWidget {
                             //brands heading
                             USectionHeading(
                               category: 'Brands',
-                              onPressed: () {},
+                              onPressed: () =>Get.to(()=>BrandsScreen()),
                             ),
 
                             // brand card
@@ -76,14 +79,17 @@ class Store extends StatelessWidget {
               ),
             ];
           },
-          body: TabBarView(
-            children: [
-              UCategoryTab(),
-              UCategoryTab(),
-              UCategoryTab(),
-              UCategoryTab(),
-              UCategoryTab(),
-            ],
+          body: Padding(
+            padding: UPadding.screenPadding,
+            child: TabBarView(
+              children: [
+                UCategoryTab(),
+                UCategoryTab(),
+                UCategoryTab(),
+                UCategoryTab(),
+                UCategoryTab(),
+              ],
+            ),
           ),
         ),
       ),

@@ -21,7 +21,7 @@ class UStorePrimaryHeader extends StatelessWidget {
           child: UAppBar(
             title: Text(
               'Store',
-              style: Theme.of(context).textTheme.headlineSmall!
+              style: Theme.of(context).textTheme.headlineMedium!
                   .apply(color: UColors.white),
             ),
             actions: [UCartCounterIcon()],
