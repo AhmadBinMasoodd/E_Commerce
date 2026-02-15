@@ -34,7 +34,7 @@ class UProductCardVertical extends StatelessWidget {
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
             URoundedContainer(
-              width: 180,
+              width: 210,
               padding:EdgeInsets.all(USizes.sm),
               backgroundColor: dark ? UColors.dark : UColors.grey,
               child: Stack(

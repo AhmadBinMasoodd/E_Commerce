@@ -29,7 +29,7 @@ class UProductHorizontal extends StatelessWidget {
         borderRadius: BorderRadius.circular(
           USizes.productImageRadius,
         ),
-        color: dark ? UColors.darkerGrey : UColors.white,
+        color: dark ? UColors.darkerGrey : UColors.light,
       ),
       child: Row(
         children: [

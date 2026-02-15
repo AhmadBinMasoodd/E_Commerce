@@ -1,4 +1,5 @@
 import 'package:e_commerce/features/shop/controllers/home/home_controller.dart';
+import 'package:e_commerce/features/shop/screens/all_products/all_products.dart';
 import 'package:e_commerce/features/shop/screens/home/widgets/home_appbar.dart';
 import 'package:e_commerce/features/shop/screens/home/widgets/home_categories.dart';
 import 'package:e_commerce/common/widgets/custom_shapes/primary_header_container.dart';
@@ -64,7 +65,7 @@ class HomeScreen extends StatelessWidget {
 
                   USectionHeading(
                     category: UTexts.homeProducts,
-                    onPressed: () {},
+                    onPressed: () =>Get.to(()=>AllProductsScreen()),
                   ),
                   SizedBox(height: USizes.spaceBtwItems),
 
