@@ -23,6 +23,10 @@ dependencies:
   iconsax: ^0.0.8
   carousel_slider: ^5.1.1
   readmore: ^3.0.0
+  firebase_core: ^4.4.0
+  firebase_auth: ^6.1.4
+  cloud_firestore: ^6.1.2
+  google_sign_in: ^7.2.0
 
 dev_dependencies:
   flutter_test:
