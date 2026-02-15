@@ -63,6 +63,7 @@ class VerifyEmailScreen extends StatelessWidget {
                     image: UImages.accountCreatedImage,
                     title: UTexts.accountCreatedTitle,
                     subtitle: UTexts.accountCreatedSubtitle,
+                    onTap: (){},
                   ),
                 ),
                 child: Text(UTexts.vContinue),
