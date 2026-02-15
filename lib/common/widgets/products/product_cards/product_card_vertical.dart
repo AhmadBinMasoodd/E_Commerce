@@ -43,7 +43,7 @@ class UProductCardVertical extends StatelessWidget {
                   Center(child: URoundedImage(imageUrl: UImages.productImage15)),
                 //  discount tag
                   Positioned(
-                    top: -5,
+                    top: 0,
                     child: URoundedContainer(
                       radius: USizes.sm,
                       backgroundColor: UColors.yellow.withValues(alpha: 0.8),
@@ -63,7 +63,7 @@ class UProductCardVertical extends StatelessWidget {
                     //favorite button
                   Positioned(
                     right: 0,
-                    top: 0,
+                    top: -5,
                     child: UCircularIcon(icon: Iconsax.heart5,color: Colors.red,),
                   ),
                 ],

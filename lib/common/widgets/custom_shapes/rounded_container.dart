@@ -13,7 +13,7 @@ class URoundedContainer extends StatelessWidget {
     this.borderColor=UColors.borderPrimary,
     this.backgroundColor=UColors.white,
     this.padding,
-     this.margin=const EdgeInsets.all(16)
+     this.margin=const EdgeInsets.all(0)
   });
   final double? width,height;
   final double radius;
