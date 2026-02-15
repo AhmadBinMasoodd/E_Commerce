@@ -1,7 +1,5 @@
 import 'package:e_commerce/common/styles/padding.dart';
-import 'package:e_commerce/features/authentication/screens/login/login.dart';
 import 'package:flutter/material.dart';
-import 'package:get/get.dart';
 
 import '../../../utils/constants/Sizes.dart';
 import '../../../utils/constants/text.dart';

@@ -6,22 +6,20 @@ import 'package:e_commerce/features/shop/screens/cart/widgets/cart_items.dart';
 import 'package:e_commerce/features/shop/screens/checkout/widgets/billing_address_section.dart';
 import 'package:e_commerce/features/shop/screens/checkout/widgets/billing_amount_section.dart';
 import 'package:e_commerce/features/shop/screens/checkout/widgets/billing_payment_section.dart';
+import 'package:e_commerce/navigation_menu.dart';
 import 'package:e_commerce/utils/constants/Sizes.dart';
 import 'package:e_commerce/utils/constants/images.dart';
-import 'package:e_commerce/utils/helpers/helpers_function.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
 import '../../../../common/widgets/button/elevated_button.dart';
 import '../../../../common/widgets/text_fields/promo_code.dart';
-import '../../../../utils/constants/colors.dart';
 
 class CheckoutScreen extends StatelessWidget {
   const CheckoutScreen({super.key});
 
   @override
   Widget build(BuildContext context) {
-    final bool dark = UHelperFunctions.isDarkMode(context);
     return Scaffold(
       ////////////aap bar
       appBar: UAppBar(
@@ -54,14 +52,14 @@ class CheckoutScreen extends StatelessWidget {
                   padding: const EdgeInsets.all(USizes.md),
                   child: Column(
                     children: [
-
                       ///amount
                       UBillingAmountSection(),
-                      SizedBox(height: USizes.spaceBtwItems,),
+                      SizedBox(height: USizes.spaceBtwItems),
 
                       //billing section
                       UBillingPaymentSection(),
-                      SizedBox(height: USizes.spaceBtwItems,),
+                      SizedBox(height: USizes.spaceBtwItems),
+
                       ///address
                       UBillingAddressSection(),
                     ],
@@ -77,7 +75,14 @@ class CheckoutScreen extends StatelessWidget {
         padding: const EdgeInsets.all(USizes.defaultSpace),
         child: UElevatedButton(
           onPressed: () {
-            Get.to(() => SuccessScreen(title: 'Payment Success', subtitle: 'Your Item will be shipped soon', image: UImages.successfulPaymentIcon,onTap: (){},));
+            Get.to(
+              () => SuccessScreen(
+                title: 'Payment Success',
+                subtitle: 'Your Item will be shipped soon',
+                image: UImages.successfulPaymentIcon,
+                onTap: () =>Get.offAll(()=>NavigationMenu()),
+              ),
+            );
           },
           child: Text('Checkout \$ 2556.2'),
         ),
@@ -85,4 +90,3 @@ class CheckoutScreen extends StatelessWidget {
     );
   }
 }
-
