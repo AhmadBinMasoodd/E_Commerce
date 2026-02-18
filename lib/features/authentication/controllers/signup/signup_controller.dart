@@ -27,10 +27,11 @@ class SignUpController extends GetxController {
   ///function to register the user with email and password
   Future<void> registerUser() async {
     //show loading
-    UFullScreenLoader.openLoadingDialog('We are processing your information');
-    bool isConnected = await Get.put(NetworkManager()).isConnected();
 
     try {
+      UFullScreenLoader.openLoadingDialog('We are processing your information');
+      bool isConnected = await Get.put(NetworkManager()).isConnected();
+
       if (!isConnected) {
         UFullScreenLoader.stopLoading();
         USnackBarHelpers.warningSnackBar(title: 'No Internet connection');
@@ -65,10 +66,11 @@ class SignUpController extends GetxController {
       await userRepository.saveUserRecord(userModel);
       
       
-      USnackBarHelpers.successSnackBar(title: 'Congratulations',message: 'Your account has been created!');
+      USnackBarHelpers.successSnackBar(title: 'Email Verification Sent',message: 'Click the link to verify your email');
       UFullScreenLoader.stopLoading();
       
-      Get.to(()=>VerifyEmailScreen());
+      Get.to(()=>VerifyEmailScreen(email: email.text,));
+
       //USnackBarHelpers.successSnackBar(title: 'title')
     } catch (e) {
       USnackBarHelpers.errorSnackBar(title: 'Error',message: e.toString());

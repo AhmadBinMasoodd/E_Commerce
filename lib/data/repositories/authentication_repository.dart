@@ -1,5 +1,7 @@
 import 'package:e_commerce/features/authentication/screens/login/login.dart';
 import 'package:e_commerce/features/authentication/screens/onboarding/onboarding.dart';
+import 'package:e_commerce/features/authentication/screens/signup/verify_email.dart';
+import 'package:e_commerce/navigation_menu.dart';
 import 'package:e_commerce/utils/exceptions/firebase_auth_exceptions.dart';
 import 'package:e_commerce/utils/exceptions/firebase_exceptions.dart';
 import 'package:e_commerce/utils/exceptions/platform_exceptions.dart';
@@ -10,7 +12,7 @@ import 'package:get_storage/get_storage.dart';
 
 class AuthenticationRepository extends GetxController {
   static AuthenticationRepository get instance => Get.find();
-  final _auth=FirebaseAuth.instance;
+  final _auth = FirebaseAuth.instance;
   final localStorage = GetStorage();
 
   // @override
@@ -25,25 +27,67 @@ class AuthenticationRepository extends GetxController {
   }
 
   void screenRedirect() {
-    localStorage.writeIfNull('isFirstTime', true);
-    localStorage.read('isFirstTime') != true
-        ? Get.to(() => LoginScreen())
-        : Get.to(() => OnboardingScreen());
+    final user = _auth.currentUser;
+    if (user != null) {
+      if(user.emailVerified){
+        Get.offAll(NavigationMenu());
+      }else{
+        Get.offAll(()=>VerifyEmailScreen(email: user.email,));
+      }
+    } else {
+      localStorage.writeIfNull('isFirstTime', true);
+      localStorage.read('isFirstTime') != true
+          ? Get.to(() => LoginScreen())
+          : Get.to(() => OnboardingScreen());
+    }
   }
 
   ///[Authentication] with email and password
-  Future<UserCredential> registerUser(String email,String password)async{
-    try{
-      UserCredential userCredential=await _auth.createUserWithEmailAndPassword(email: email, password: password);
+  Future<UserCredential> registerUser(String email, String password) async {
+    try {
+      UserCredential userCredential = await _auth
+          .createUserWithEmailAndPassword(email: email, password: password);
       return userCredential;
-    }on FirebaseAuthException catch(e){
+    } on FirebaseAuthException catch (e) {
       throw UFirebaseAuthException(e.code).message;
-    }on FirebaseException catch(e){
+    } on FirebaseException catch (e) {
       throw UFirebaseException(e.code).message;
-    } on UPlatformException catch(e){
+    } on UPlatformException catch (e) {
       throw UFirebaseException(e.code).message;
-    }catch(e){
+    } catch (e) {
       throw "Something went wrong. Please try again";
     }
   }
+  ///[verification] email
+
+  Future<void> sendEmailVerification() async {
+    try {
+      await _auth.currentUser?.sendEmailVerification();
+    } on FirebaseAuthException catch (e) {
+      throw UFirebaseAuthException(e.code).message;
+    } on FirebaseException catch (e) {
+      throw UFirebaseException(e.code).message;
+    } on UPlatformException catch (e) {
+      throw UFirebaseException(e.code).message;
+    } catch (e) {
+      throw "Something went wrong. Please try again";
+    }
+  }
+  /// [logout] logout the use
+
+  Future<void> logout()async{
+    try {
+      await FirebaseAuth.instance.signOut();
+      Get.offAll(()=>LoginScreen());
+    } on FirebaseAuthException catch (e) {
+      throw UFirebaseAuthException(e.code).message;
+    } on FirebaseException catch (e) {
+      throw UFirebaseException(e.code).message;
+    } on UPlatformException catch (e) {
+      throw UFirebaseException(e.code).message;
+    } catch (e) {
+      throw "Something went wrong. Please try again";
+    }
+  }
+
 }
