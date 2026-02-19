@@ -1,5 +1,6 @@
 import 'package:e_commerce/data/repositories/authentication_repository.dart';
 import 'package:e_commerce/my_app.dart';
+import 'package:e_commerce/utils/helpers/network_manager.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
@@ -15,6 +16,7 @@ void main() async{
   FlutterNativeSplash.preserve(widgetsBinding: widgetBinding);
 
   await GetStorage.init();
+  Get.put(NetworkManager());
 
   await Firebase.initializeApp(
     options: DefaultFirebaseOptions.currentPlatform,

@@ -21,8 +21,8 @@ class LoginController extends GetxController{
   @override
   void onInit() {
 
-    email.text=localStorage.read('Remember_email');
-    password.text=localStorage.read('Remember_password');
+    email.text=localStorage.read('Remember_email')??"";
+    password.text=localStorage.read('Remember_password')??"";
     super.onInit();
   }
 
@@ -45,7 +45,7 @@ class LoginController extends GetxController{
       //save data if remember me is checked
       if(rememberMe.value){
         localStorage.write('Remember_email', email.text.trim());
-        localStorage.write('Remember_password', email.text.trim());
+        localStorage.write('Remember_password', password.text.trim());
 
       }
       //login user
