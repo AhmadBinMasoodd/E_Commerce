@@ -58,6 +58,25 @@ class AuthenticationRepository extends GetxController {
       throw "Something went wrong. Please try again";
     }
   }
+
+  ///[EmailAuthentication] with email and password
+  Future<UserCredential> loginWithEmailAndPassword(String email, String password) async {
+    try {
+      UserCredential userCredential = await _auth
+          .signInWithEmailAndPassword(email: email, password: password);
+      return userCredential;
+    } on FirebaseAuthException catch (e) {
+      throw UFirebaseAuthException(e.code).message;
+    } on FirebaseException catch (e) {
+      throw UFirebaseException(e.code).message;
+    } on UPlatformException catch (e) {
+      throw UFirebaseException(e.code).message;
+    } catch (e) {
+      throw "Something went wrong. Please try again";
+    }
+  }
+
+
   ///[verification] email
 
   Future<void> sendEmailVerification() async {
@@ -89,5 +108,7 @@ class AuthenticationRepository extends GetxController {
       throw "Something went wrong. Please try again";
     }
   }
+
+
 
 }
