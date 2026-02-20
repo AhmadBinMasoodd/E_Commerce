@@ -27,10 +27,8 @@ class ForgetPassowrdController extends GetxController{
       }
 
       ///form vekidation
-      if(forgetPasswordFormKey.currentState!.validate()){
+      if(!forgetPasswordFormKey.currentState!.validate()){
         UFullScreenLoader.stopLoading();
-
-
         return;
       }
 

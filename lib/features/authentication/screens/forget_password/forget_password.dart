@@ -1,7 +1,6 @@
 import 'package:e_commerce/common/styles/padding.dart';
 import 'package:e_commerce/common/widgets/button/elevated_button.dart';
 import 'package:e_commerce/features/authentication/controllers/forget_password/forget_password_controller.dart';
-import 'package:e_commerce/features/authentication/screens/forget_password/reset_password.dart';
 import 'package:e_commerce/utils/constants/Sizes.dart';
 import 'package:e_commerce/utils/constants/text.dart';
 import 'package:e_commerce/utils/validators/validation.dart';
@@ -61,7 +60,6 @@ class ForgetPasswordScreen extends StatelessWidget {
                   UElevatedButton(onPressed: controller.sendPasswordResetEmail, child: Text(UTexts.submit)),
                 ],
               )
-
             ],
           ),
         ),

@@ -6,11 +6,15 @@ import 'package:e_commerce/utils/constants/Sizes.dart';
 import 'package:flutter/material.dart';
 import 'package:iconsax/iconsax.dart';
 
+import '../../controllers/user_controller.dart';
+
 class EditProfileScreen extends StatelessWidget {
   const EditProfileScreen({super.key});
 
   @override
   Widget build(BuildContext context) {
+    final controller = UserController.instance;
+
     return Scaffold(
       appBar: UAppBar(
         showBackArrow: true,
@@ -40,8 +44,8 @@ class EditProfileScreen extends StatelessWidget {
               SizedBox(height: USizes.spaceBtwItems),
 
 
-              UserDetailRow(title: 'Name',value: 'Unknown',onTap: (){},),
-              UserDetailRow(title: 'Username',value: 'Unknown25',onTap: (){},),
+              UserDetailRow(title: 'Name',value: controller.user.value.fullName,onTap: (){},),
+              UserDetailRow(title: 'Username',value: controller.user.value.username,onTap: (){},),
 
               Divider(),
               SizedBox(height: USizes.spaceBtwItems),
@@ -52,9 +56,9 @@ class EditProfileScreen extends StatelessWidget {
                 showActionButton: false,
               ),
               SizedBox(height: USizes.spaceBtwItems),
-              UserDetailRow(title: 'User ID',value: '97452',onTap: (){},),
-              UserDetailRow(title: 'Email',value: 'Unknown@example.com',onTap: (){},),
-              UserDetailRow(title: 'Phone NUmber',value: '+92123456789',onTap: (){},),
+              UserDetailRow(title: 'User ID',value: controller.user.value.id,onTap: (){},),
+              UserDetailRow(title: 'Email',value: controller.user.value.email,onTap: (){},),
+              UserDetailRow(title: 'Phone NUmber',value: '+92 ${controller.user.value.phoneNumber}',onTap: (){},),
               UserDetailRow(title: 'Gender',value: 'Male',onTap: (){},),
 
 

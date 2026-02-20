@@ -15,6 +15,8 @@ class AuthenticationRepository extends GetxController {
   final _auth = FirebaseAuth.instance;
   final localStorage = GetStorage();
 
+  User? get currentUser=>_auth.currentUser;
+
   // @override
   // void onInit(){
   //
@@ -110,7 +112,7 @@ class AuthenticationRepository extends GetxController {
   }
 
 
- /// [Forget Password] Send email to reset password
+ /// [ Forget_Password ] Send email to reset password
 
   Future<void> sendPasswordResetEmail(String email) async {
     try {

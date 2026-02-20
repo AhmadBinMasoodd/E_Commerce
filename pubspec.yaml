@@ -23,6 +23,7 @@ dependencies:
   iconsax: ^0.0.8
   carousel_slider: ^5.1.1
   readmore: ^3.0.0
+  shimmer: ^3.0.0
   firebase_core: ^4.4.0
   firebase_auth: ^6.1.4
   cloud_firestore: ^6.1.2

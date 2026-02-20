@@ -19,6 +19,8 @@ class UserModel {
     required this.profilePicture,
   });
 
+  String get fullName => '$firstName $lastName';
+
   static UserModel empty() => UserModel(
     id: '',
     firstName: "",

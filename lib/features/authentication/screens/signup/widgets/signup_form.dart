@@ -23,7 +23,7 @@ class USignupForm extends StatelessWidget {
             children: [
               Expanded(
                 child: TextFormField(
-                  controller: controller.lastName,
+                  controller: controller.firstName,
                   validator: (value) =>
                       UValidator.validateEmptyText('First Name', value),
                   decoration: InputDecoration(
@@ -36,7 +36,7 @@ class USignupForm extends StatelessWidget {
               //last name
               Expanded(
                 child: TextFormField(
-                  controller: controller.firstName,
+                  controller: controller.lastName,
 
                   validator: (value) =>
                       UValidator.validateEmptyText('Last Name', value),
