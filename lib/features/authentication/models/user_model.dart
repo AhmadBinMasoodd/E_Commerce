@@ -8,7 +8,7 @@ class UserModel {
   final String email;
   String phoneNumber;
   String profilePicture;
-
+  String publicId;
   UserModel({
     required this.id,
     required this.firstName,
@@ -17,6 +17,7 @@ class UserModel {
     required this.email,
     required this.phoneNumber,
     required this.profilePicture,
+    this.publicId=''
   });
 
   String get fullName => '$firstName $lastName';
@@ -41,6 +42,7 @@ class UserModel {
       "email":email,
       'phoneNumber': phoneNumber,
       'profilePicture': profilePicture,
+      'publicId':publicId,
     };
   }
 
@@ -60,6 +62,7 @@ class UserModel {
       email: data['email']??'',
       phoneNumber: data['phoneNumber'] ?? '',
       profilePicture: data['profilePicture'] ?? '',
+      publicId: data['publicId']??''
     );
   }
 }

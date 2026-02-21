@@ -8,6 +8,8 @@ import 'package:e_commerce/utils/popups/snackbar_helpers.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:get/get.dart';
 
+import '../../../../utils/popups/full_screen_loader.dart';
+
 class VerifyEmailController extends GetxController {
   static VerifyEmailController get instance => Get.find();
 
@@ -63,7 +65,8 @@ class VerifyEmailController extends GetxController {
         );
       }
     }catch(e){
-
+      UFullScreenLoader.stopLoading();
+      USnackBarHelpers.errorSnackBar(title: 'Error Deleting Account',message: e.toString());
     }
   }
 

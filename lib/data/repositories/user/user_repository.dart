@@ -1,6 +1,9 @@
+import 'dart:io';
+
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:e_commerce/data/repositories/authentication_repository.dart';
 import 'package:e_commerce/features/authentication/models/user_model.dart';
+import 'package:e_commerce/utils/constants/apis.dart';
 import 'package:e_commerce/utils/constants/keys.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:get/get.dart';
@@ -8,6 +11,7 @@ import '../../../utils/exceptions/firebase_auth_exceptions.dart';
 import '../../../utils/exceptions/firebase_exceptions.dart';
 import '../../../utils/exceptions/platform_exceptions.dart'
     show UPlatformException;
+import 'package:dio/dio.dart' as dio;
 
 class UserRepository extends GetxController {
   static UserRepository get instance => Get.find();
@@ -56,11 +60,13 @@ class UserRepository extends GetxController {
     }
   }
 
-/// [Update] function to fetch user details
-  Future<void> updateSingleField(Map<String,dynamic> map) async {
+  /// [Update] function to fetch user details
+  Future<void> updateSingleField(Map<String, dynamic> map) async {
     try {
-
-      await _db.collection(UKeys.userCollection).doc(AuthenticationRepository.instance.currentUser!.uid).update(map);
+      await _db
+          .collection(UKeys.userCollection)
+          .doc(AuthenticationRepository.instance.currentUser!.uid)
+          .update(map);
     } on FirebaseAuthException catch (e) {
       throw UFirebaseAuthException(e.code).message;
     } on FirebaseException catch (e) {
@@ -74,9 +80,8 @@ class UserRepository extends GetxController {
 
   /// [Delete] function to delete user details
 
-  Future<void> removeUserRecord(String userId)async{
+  Future<void> removeUserRecord(String userId) async {
     try {
-
       await _db.collection(UKeys.userCollection).doc(userId).delete();
     } on FirebaseAuthException catch (e) {
       throw UFirebaseAuthException(e.code).message;
@@ -86,6 +91,24 @@ class UserRepository extends GetxController {
       throw UFirebaseException(e.code).message;
     } catch (e) {
       throw "Something went wrong. Please try again";
+    }
+  }
+
+  Future<dio.Response> uploadImage(File image) async {
+    try {
+      String api = UApiUrls.uploadApi(UKeys.cloudName);
+      dio.FormData formData = dio.FormData.fromMap({
+        'upload_preset': UKeys.uploadPreset,
+        'folder': UKeys.profileFolder,
+        'file':await dio.MultipartFile.fromFile(image.path,filename:image.path.split('/').last ),
+      });
+      dio.Response response = await dio.Dio().post(
+        api,
+        data: formData,
+      );
+      return response;
+    } catch (e) {
+      throw 'Failed to upload profile picture please try again';
     }
   }
 }

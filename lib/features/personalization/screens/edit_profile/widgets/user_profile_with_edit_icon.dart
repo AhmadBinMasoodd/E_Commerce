@@ -1,3 +1,4 @@
+import 'package:e_commerce/features/personalization/controllers/user_controller.dart';
 import 'package:flutter/material.dart';
 import 'package:iconsax/iconsax.dart';
 
@@ -11,6 +12,7 @@ class UserProfileWithEditIcon extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final controller=UserController.instance;
     return Stack(
       children: [
         Center(child: UserProfileLogo()),
@@ -21,7 +23,7 @@ class UserProfileWithEditIcon extends StatelessWidget {
           bottom: 0,
           child: Align(
             alignment: Alignment.center,
-              child: UCircularIcon(icon: Iconsax.edit)),
+              child: UCircularIcon(icon: Iconsax.edit,onPressed:controller.updateUserProfilePicture ,)),
         ),
 
       ],

@@ -1,3 +1,4 @@
+import 'dart:io';
 import 'package:e_commerce/data/repositories/authentication_repository.dart';
 import 'package:e_commerce/data/repositories/user/user_repository.dart';
 import 'package:e_commerce/features/authentication/models/user_model.dart';
@@ -7,10 +8,11 @@ import 'package:e_commerce/utils/constants/Sizes.dart';
 import 'package:e_commerce/utils/helpers/network_manager.dart';
 import 'package:e_commerce/utils/popups/full_screen_loader.dart';
 import 'package:e_commerce/utils/popups/snackbar_helpers.dart';
-
+import 'package:dio/dio.dart' as dio;
 //import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:image_picker/image_picker.dart';
 
 class UserController extends GetxController {
   static UserController get instance => Get.find();
@@ -108,15 +110,61 @@ class UserController extends GetxController {
             email.text.trim(),
             password.text,
           );
+
       ///delete account
       await AuthenticationRepository.instance.deleteAccount();
 
       UFullScreenLoader.stopLoading();
+
       /// redirect
-      Get.offAll(()=>LoginScreen());
+      Get.offAll(() => LoginScreen());
     } catch (e) {
       UFullScreenLoader.stopLoading();
-      USnackBarHelpers.errorSnackBar(title: 'Error Deleting Account',message: e.toString());
+      USnackBarHelpers.errorSnackBar(
+        title: 'Error Deleting Account',
+        message: e.toString(),
+      );
+    }
+  }
+
+  Future<void> updateUserProfilePicture() async {
+    try {
+      ///pick image from gallery
+      XFile? image=await ImagePicker().pickImage(
+        source: ImageSource.gallery,
+        maxHeight: 512,
+        maxWidth: 512,
+      );
+      if(image==null){
+        return;
+      }
+
+
+      ///convert xfile to file
+      File file=File(image.path);
+      // // Read bytes
+      // final bytes = await image.readAsBytes();  // Uint8List
+      //
+      // final base64Image = base64Encode(bytes.toList());
+
+      ///upload profile picture to cloudinary
+      dio.Response response=await _userRepository.uploadImage(file);
+      if(response.statusCode==200){
+        final data=response.data;
+        final imageUrl=data['url'];
+        final publicId=data['public_id'];
+        await _userRepository.updateSingleField({'profilePicture':imageUrl,'publicId':publicId});
+        user.value.profilePicture=imageUrl;
+        user.value.publicId=publicId;
+        user.refresh();
+
+        USnackBarHelpers.successSnackBar(title: 'Congratulations',message: 'Profile picture updated successfully');
+      }else{
+        throw  'Failed to upload profile picture please try again';
+      }
+
+    } catch (e) {
+      USnackBarHelpers.errorSnackBar(title: 'Failed',message:e.toString());
     }
   }
 }

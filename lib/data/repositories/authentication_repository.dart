@@ -153,8 +153,9 @@ class AuthenticationRepository extends GetxController {
     try{
       await UserRepository.instance.removeUserRecord(currentUser!.uid);
       await _auth.currentUser?.delete();
-    }catch(e){
-
+    }
+    catch(e){
+      throw "Something went wrong. Please try again";
     }
   }
 }
