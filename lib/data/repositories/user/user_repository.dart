@@ -72,4 +72,20 @@ class UserRepository extends GetxController {
     }
   }
 
+  /// [Delete] function to delete user details
+
+  Future<void> removeUserRecord(String userId)async{
+    try {
+
+      await _db.collection(UKeys.userCollection).doc(userId).delete();
+    } on FirebaseAuthException catch (e) {
+      throw UFirebaseAuthException(e.code).message;
+    } on FirebaseException catch (e) {
+      throw UFirebaseException(e.code).message;
+    } on UPlatformException catch (e) {
+      throw UFirebaseException(e.code).message;
+    } catch (e) {
+      throw "Something went wrong. Please try again";
+    }
+  }
 }

@@ -63,11 +63,11 @@ class EditProfileScreen extends StatelessWidget {
               UserDetailRow(title: 'Phone NUmber',value: '+92 ${controller.user.value.phoneNumber}',onTap: (){},),
               UserDetailRow(title: 'Gender',value: 'Male',onTap: (){},),
 
-
+              ///divider
               Divider(),
               SizedBox(height: USizes.spaceBtwItems),
-
-              TextButton(onPressed: (){}, child: Text('Close Account',style: TextStyle(color: Colors.red),))
+              //close account button
+              TextButton(onPressed: controller.deleteAccountWarningPopup, child: Text('Close Account',style: TextStyle(color: Colors.red),))
 
 
 

@@ -1,3 +1,4 @@
+import 'package:e_commerce/data/repositories/user/user_repository.dart';
 import 'package:e_commerce/features/authentication/screens/login/login.dart';
 import 'package:e_commerce/features/authentication/screens/onboarding/onboarding.dart';
 import 'package:e_commerce/features/authentication/screens/signup/verify_email.dart';
@@ -129,6 +130,31 @@ class AuthenticationRepository extends GetxController {
   }
 
 
+  /// [ ReAuthentication ] Send email to reset password
 
+  Future<void> reAuthenticateUserWithEmailAndPassword(String email,String password) async {
+    try {
+      AuthCredential credential=EmailAuthProvider.credential(email: email, password: password);
+      await currentUser!.reauthenticateWithCredential(credential);
+    } on FirebaseAuthException catch (e) {
+      throw UFirebaseAuthException(e.code).message;
+    } on FirebaseException catch (e) {
+      throw UFirebaseException(e.code).message;
+    } on UPlatformException catch (e) {
+      throw UFirebaseException(e.code).message;
+    } catch (e) {
+      throw "Something went wrong. Please try again";
+    }
+  }
 
+  /// [Delete_User] delete user account
+
+  Future<void> deleteAccount()async{
+    try{
+      await UserRepository.instance.removeUserRecord(currentUser!.uid);
+      await _auth.currentUser?.delete();
+    }catch(e){
+
+    }
+  }
 }

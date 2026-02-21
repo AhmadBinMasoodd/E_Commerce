@@ -2,7 +2,6 @@
 
 import 'package:e_commerce/data/repositories/user/user_repository.dart';
 import 'package:e_commerce/features/personalization/controllers/user_controller.dart';
-import 'package:e_commerce/features/shop/screens/home/home.dart';
 import 'package:e_commerce/navigation_menu.dart';
 import 'package:e_commerce/utils/helpers/network_manager.dart';
 import 'package:e_commerce/utils/popups/full_screen_loader.dart';
