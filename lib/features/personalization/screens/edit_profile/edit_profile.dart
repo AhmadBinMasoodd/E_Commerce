@@ -1,9 +1,11 @@
 import 'package:e_commerce/common/styles/padding.dart';
 import 'package:e_commerce/common/widgets/appbar/appbar.dart';
 import 'package:e_commerce/common/widgets/texts/section_heading.dart';
+import 'package:e_commerce/features/personalization/screens/change_name/change_name.dart';
 import 'package:e_commerce/features/personalization/screens/edit_profile/widgets/user_profile_with_edit_icon.dart';
 import 'package:e_commerce/utils/constants/Sizes.dart';
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 import 'package:iconsax/iconsax.dart';
 
 import '../../controllers/user_controller.dart';
@@ -44,7 +46,7 @@ class EditProfileScreen extends StatelessWidget {
               SizedBox(height: USizes.spaceBtwItems),
 
 
-              UserDetailRow(title: 'Name',value: controller.user.value.fullName,onTap: (){},),
+              UserDetailRow(title: 'Name',value: controller.user.value.fullName,onTap: ()=>Get.to(()=>ChangeNameScreen()),),
               UserDetailRow(title: 'Username',value: controller.user.value.username,onTap: (){},),
 
               Divider(),

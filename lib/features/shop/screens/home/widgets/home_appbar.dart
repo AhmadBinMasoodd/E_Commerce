@@ -7,7 +7,6 @@ import 'package:flutter/material.dart';
 import '../../../../../common/widgets/appbar/appbar.dart';
 import '../../../../../common/widgets/products/cart/cart_counter_icon.dart';
 import '../../../../../utils/constants/colors.dart';
-import '../../../../../utils/constants/text.dart';
 import 'package:get/get.dart';
 class UHomeAppbar extends StatelessWidget {
   const UHomeAppbar({

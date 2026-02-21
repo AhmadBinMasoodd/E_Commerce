@@ -55,4 +55,21 @@ class UserRepository extends GetxController {
       throw "Something went wrong. Please try again";
     }
   }
+
+/// [Update] function to fetch user details
+  Future<void> updateSingleField(Map<String,dynamic> map) async {
+    try {
+
+      await _db.collection(UKeys.userCollection).doc(AuthenticationRepository.instance.currentUser!.uid).update(map);
+    } on FirebaseAuthException catch (e) {
+      throw UFirebaseAuthException(e.code).message;
+    } on FirebaseException catch (e) {
+      throw UFirebaseException(e.code).message;
+    } on UPlatformException catch (e) {
+      throw UFirebaseException(e.code).message;
+    } catch (e) {
+      throw "Something went wrong. Please try again";
+    }
+  }
+
 }
