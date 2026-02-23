@@ -1,6 +1,8 @@
+import 'dart:convert';
 import 'dart:io';
 
 import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:crypto/crypto.dart';
 import 'package:e_commerce/data/repositories/authentication_repository.dart';
 import 'package:e_commerce/features/authentication/models/user_model.dart';
 import 'package:e_commerce/utils/constants/apis.dart';
@@ -109,6 +111,28 @@ class UserRepository extends GetxController {
       return response;
     } catch (e) {
       throw 'Failed to upload profile picture please try again';
+    }
+  }
+
+  Future<dio.Response> deleteProfilePicture(String publicId)async{
+    try{
+
+      String api=UApiUrls.deleteApi(UKeys.cloudName);
+      int timestamp=(DateTime.now().microsecondsSinceEpoch/1000).round();
+      String signatureBase='public_id=$publicId&timestamp=$timestamp${UKeys.apiSecret}';
+
+      String signature = sha1.convert(utf8.encode(signatureBase)).toString();
+      dio.FormData formData = dio.FormData.fromMap({
+        'public_id': publicId,
+        'api_key': UKeys.apiKey,
+        'timestamp':timestamp,
+        'signature':signature
+      });
+      dio.Response response=await dio.Dio().post(api,data:formData);
+      return response;
+    }catch(e){
+      throw 'Something went wrong.Please try again';
+
     }
   }
 }

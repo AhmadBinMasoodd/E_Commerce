@@ -9,7 +9,6 @@ import 'package:e_commerce/utils/helpers/network_manager.dart';
 import 'package:e_commerce/utils/popups/full_screen_loader.dart';
 import 'package:e_commerce/utils/popups/snackbar_helpers.dart';
 import 'package:dio/dio.dart' as dio;
-//import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:image_picker/image_picker.dart';
@@ -25,7 +24,7 @@ class UserController extends GetxController {
   final password = TextEditingController();
   final reAuthFormKey = GlobalKey<FormState>();
   RxBool isPasswordVisible = false.obs;
-
+  RxBool isImageUploading=false.obs;
   @override
   void onInit() {
     fetchUserRecord();
@@ -129,6 +128,8 @@ class UserController extends GetxController {
 
   Future<void> updateUserProfilePicture() async {
     try {
+
+      isImageUploading.value=true;
       ///pick image from gallery
       XFile? image=await ImagePicker().pickImage(
         source: ImageSource.gallery,
@@ -142,10 +143,11 @@ class UserController extends GetxController {
 
       ///convert xfile to file
       File file=File(image.path);
-      // // Read bytes
-      // final bytes = await image.readAsBytes();  // Uint8List
-      //
-      // final base64Image = base64Encode(bytes.toList());
+      ///delete user current profile picture
+      if(user.value.publicId.isNotEmpty){
+
+        await _userRepository.deleteProfilePicture(user.value.publicId);
+      }
 
       ///upload profile picture to cloudinary
       dio.Response response=await _userRepository.uploadImage(file);
@@ -165,6 +167,11 @@ class UserController extends GetxController {
 
     } catch (e) {
       USnackBarHelpers.errorSnackBar(title: 'Failed',message:e.toString());
+    }finally{
+      isImageUploading.value=false;
+
     }
   }
+
+
 }
