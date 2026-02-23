@@ -7,6 +7,7 @@ import 'package:flutter/services.dart';
 import 'package:flutter_native_splash/flutter_native_splash.dart';
 import 'package:get/get.dart';
 import 'package:get_storage/get_storage.dart';
+import 'data/services/CloudinaryServices.dart';
 import 'firebase_options.dart';
 import 'package:flutter_dotenv/flutter_dotenv.dart';
 
@@ -15,6 +16,7 @@ void main() async{
   final widgetBinding=WidgetsFlutterBinding.ensureInitialized();
   await dotenv.load(fileName: 'assets/.env');
   FlutterNativeSplash.preserve(widgetsBinding: widgetBinding);
+  Get.put(CloudinaryServices());
 
   await GetStorage.init();
   Get.put(NetworkManager());

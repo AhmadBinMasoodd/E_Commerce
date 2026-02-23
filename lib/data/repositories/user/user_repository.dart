@@ -4,6 +4,7 @@ import 'dart:io';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:crypto/crypto.dart';
 import 'package:e_commerce/data/repositories/authentication_repository.dart';
+import 'package:e_commerce/data/services/CloudinaryServices.dart';
 import 'package:e_commerce/features/authentication/models/user_model.dart';
 import 'package:e_commerce/utils/constants/apis.dart';
 import 'package:e_commerce/utils/constants/keys.dart';
@@ -19,6 +20,8 @@ class UserRepository extends GetxController {
   static UserRepository get instance => Get.find();
 
   final _db = FirebaseFirestore.instance;
+  final _cloudinaryServices=Get.put(CloudinaryServices());
+
 
   /// [Save] function to save user record
 
@@ -95,40 +98,20 @@ class UserRepository extends GetxController {
       throw "Something went wrong. Please try again";
     }
   }
-
   Future<dio.Response> uploadImage(File image) async {
     try {
-      String api = UApiUrls.uploadApi(UKeys.cloudName);
-      dio.FormData formData = dio.FormData.fromMap({
-        'upload_preset': UKeys.uploadPreset,
-        'folder': UKeys.profileFolder,
-        'file':await dio.MultipartFile.fromFile(image.path,filename:image.path.split('/').last ),
-      });
-      dio.Response response = await dio.Dio().post(
-        api,
-        data: formData,
-      );
+      dio.Response response=await _cloudinaryServices.uploadImage(image, UKeys.profileFolder);
+
       return response;
     } catch (e) {
       throw 'Failed to upload profile picture please try again';
     }
   }
 
+  /// [DeleteImage] function to delete profile image
   Future<dio.Response> deleteProfilePicture(String publicId)async{
     try{
-
-      String api=UApiUrls.deleteApi(UKeys.cloudName);
-      int timestamp=(DateTime.now().microsecondsSinceEpoch/1000).round();
-      String signatureBase='public_id=$publicId&timestamp=$timestamp${UKeys.apiSecret}';
-
-      String signature = sha1.convert(utf8.encode(signatureBase)).toString();
-      dio.FormData formData = dio.FormData.fromMap({
-        'public_id': publicId,
-        'api_key': UKeys.apiKey,
-        'timestamp':timestamp,
-        'signature':signature
-      });
-      dio.Response response=await dio.Dio().post(api,data:formData);
+      dio.Response response=await _cloudinaryServices.deletePicture(publicId);
       return response;
     }catch(e){
       throw 'Something went wrong.Please try again';
