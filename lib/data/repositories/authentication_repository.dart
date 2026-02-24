@@ -30,7 +30,7 @@ class AuthenticationRepository extends GetxController {
   void onReady() {
     FlutterNativeSplash.remove();
     screenRedirect();
-    Get.put(BannersRepository()).uploadBanners(UDummyData.banner);
+    //Get.put(BannersRepository()).uploadBanners(UDummyData.banner);
     //Get.put(CategoryRepository()).uploadCategory(UDummyData.categories);
   }
 
