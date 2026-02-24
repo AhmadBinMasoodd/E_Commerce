@@ -4,6 +4,7 @@ class UKeys{
   UKeys._();
   static const String userCollection='Users';
   static const String categoryCollection='Categories';
+  static const String bannersCollection='Banners';
 
   static const String rememberMeEmail='rememberEmail';
   static const String rememberMePassword='rememberPassword';
@@ -15,5 +16,6 @@ class UKeys{
   static String get apiSecret => dotenv.env['API_SECRET'] ?? '';
 
   static const String categoryFolder='Category Pictures';
+  static const String bannersFolder='Banners Pictures';
 
 }

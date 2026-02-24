@@ -4,7 +4,7 @@ import 'package:e_commerce/utils/popups/snackbar_helpers.dart';
 import 'package:get/get.dart';
 
 class CategoryController extends GetxController{
-  static CategoryController get find=>Get.find();
+  static CategoryController get instance=>Get.find();
 
   ///variable
   final _repository=Get.put(CategoryRepository());

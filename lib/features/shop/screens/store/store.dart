@@ -1,5 +1,6 @@
 import 'package:e_commerce/common/styles/padding.dart';
 import 'package:e_commerce/common/widgets/texts/section_heading.dart';
+import 'package:e_commerce/features/shop/controllers/category/category_controller.dart';
 import 'package:e_commerce/features/shop/screens/brands/brands.dart';
 import 'package:e_commerce/features/shop/screens/store/widgets/category_tab.dart';
 import 'package:e_commerce/features/shop/screens/store/widgets/store_primary_header.dart';
@@ -16,8 +17,9 @@ class Store extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final controller = CategoryController.instance;
     return DefaultTabController(
-      length: 5,
+      length: controller.featuredCategories.length,
       child: Scaffold(
         body: NestedScrollView(
           headerSliverBuilder: (context, innerBoxIsScrolled) {
@@ -43,7 +45,7 @@ class Store extends StatelessWidget {
                             //brands heading
                             USectionHeading(
                               category: 'Brands',
-                              onPressed: () =>Get.to(()=>BrandsScreen()),
+                              onPressed: () => Get.to(() => BrandsScreen()),
                             ),
 
                             // brand card
@@ -68,13 +70,9 @@ class Store extends StatelessWidget {
                   ),
                 ),
                 bottom: UTabBar(
-                  tabs: [
-                    Tab(child: Text('Sports')),
-                    Tab(child: Text('Furniture')),
-                    Tab(child: Text('Electronics')),
-                    Tab(child: Text('Clothes')),
-                    Tab(child: Text('Cosmetics')),
-                  ],
+                  tabs: controller.featuredCategories
+                      .map((category) => Tab(child: Text(category.name)))
+                      .toList(),
                 ),
               ),
             ];
@@ -82,13 +80,9 @@ class Store extends StatelessWidget {
           body: Padding(
             padding: UPadding.screenPadding,
             child: TabBarView(
-              children: [
-                UCategoryTab(),
-                UCategoryTab(),
-                UCategoryTab(),
-                UCategoryTab(),
-                UCategoryTab(),
-              ],
+              children: controller.featuredCategories
+                  .map((category) => UCategoryTab())
+                  .toList(),
             ),
           ),
         ),
