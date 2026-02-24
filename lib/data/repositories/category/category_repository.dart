@@ -30,7 +30,6 @@ class CategoryRepository extends GetxController {
         }
 
         await _db.collection(UKeys.categoryCollection).doc(category.id).set(category.toJson());
-        print('Category Uploaded: ${category.name}');
       }
 
     } on FirebaseException catch (e) {
@@ -42,9 +41,14 @@ class CategoryRepository extends GetxController {
     }
   }
   /// [FetchCategories] function to fetch the list of categories
-  Future<void> deleteCategory(List<CategoryModel> categories)async{
+  Future<List<CategoryModel>> getAllCategories()async{
     try{
-
+      final query = await _db.collection(UKeys.categoryCollection).get();
+      if(query.docs.isNotEmpty){
+        List<CategoryModel> categories=query.docs.map((document)=>CategoryModel.fromSnapshot(document)).toList();
+        return categories;
+      }
+      return [];
     }on FirebaseAuthException catch (e) {
       throw UFirebaseAuthException(e.code).message;
     } on FirebaseException catch (e) {

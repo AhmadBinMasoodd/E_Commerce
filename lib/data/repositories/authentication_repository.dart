@@ -1,6 +1,4 @@
-import 'package:e_commerce/data/repositories/category/category_repository.dart';
 import 'package:e_commerce/data/repositories/user/user_repository.dart';
-import 'package:e_commerce/dummy_data.dart';
 import 'package:e_commerce/features/authentication/screens/login/login.dart';
 import 'package:e_commerce/features/authentication/screens/onboarding/onboarding.dart';
 import 'package:e_commerce/features/authentication/screens/signup/verify_email.dart';
@@ -30,7 +28,7 @@ class AuthenticationRepository extends GetxController {
   void onReady() {
     FlutterNativeSplash.remove();
     screenRedirect();
-    Get.put(CategoryRepository()).uploadCategory(UDummyData.categories);
+    //Get.put(CategoryRepository()).uploadCategory(UDummyData.categories);
   }
 
   void screenRedirect() {

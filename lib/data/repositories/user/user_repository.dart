@@ -1,12 +1,9 @@
-import 'dart:convert';
 import 'dart:io';
 
 import 'package:cloud_firestore/cloud_firestore.dart';
-import 'package:crypto/crypto.dart';
 import 'package:e_commerce/data/repositories/authentication_repository.dart';
 import 'package:e_commerce/data/services/CloudinaryServices.dart';
 import 'package:e_commerce/features/authentication/models/user_model.dart';
-import 'package:e_commerce/utils/constants/apis.dart';
 import 'package:e_commerce/utils/constants/keys.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:get/get.dart';
