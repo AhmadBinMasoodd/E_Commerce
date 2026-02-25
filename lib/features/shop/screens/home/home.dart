@@ -5,7 +5,6 @@ import 'package:e_commerce/features/shop/screens/home/widgets/home_categories.da
 import 'package:e_commerce/common/widgets/custom_shapes/primary_header_container.dart';
 import 'package:e_commerce/features/shop/screens/home/widgets/promo_slider.dart';
 import 'package:e_commerce/utils/constants/Sizes.dart';
-import 'package:e_commerce/utils/constants/images.dart';
 import 'package:e_commerce/utils/constants/text.dart';
 
 import 'package:flutter/material.dart';
@@ -53,25 +52,15 @@ class HomeScreen extends StatelessWidget {
               padding: EdgeInsets.all(USizes.defaultSpace),
               child: Column(
                 children: [
-                  UPromoSlider(
-                    banners: [
-                      UImages.homeBanner1,
-                      UImages.homeBanner2,
-                      UImages.homeBanner3,
-                      UImages.homeBanner4,
-                      UImages.homeBanner5,
-                    ],
-                  ),
+                  UPromoSlider(),
 
                   USectionHeading(
                     category: UTexts.homeProducts,
-                    onPressed: () =>Get.to(()=>AllProductsScreen()),
+                    onPressed: () => Get.to(() => AllProductsScreen()),
                   ),
                   SizedBox(height: USizes.spaceBtwItems),
 
                   ///vertical product card
-
-
                   UGridLayout(
                     itemCount: 10,
                     itemBuilder: (context, index) {
@@ -87,4 +76,3 @@ class HomeScreen extends StatelessWidget {
     );
   }
 }
-

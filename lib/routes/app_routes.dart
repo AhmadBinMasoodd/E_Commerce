@@ -1,4 +1,3 @@
-import 'package:e_commerce/features/shop/screens/home/home.dart';
 import 'package:e_commerce/features/shop/screens/store/store.dart';
 import 'package:e_commerce/navigation_menu.dart';
 import 'package:e_commerce/routes/routes.dart';

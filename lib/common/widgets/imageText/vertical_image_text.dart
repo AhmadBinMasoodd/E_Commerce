@@ -2,7 +2,6 @@ import 'package:e_commerce/common/widgets/images/circular_image.dart';
 import 'package:flutter/material.dart';
 
 import '../../../utils/constants/Sizes.dart';
-import '../../../utils/helpers/helpers_function.dart';
 
 class UVerticalImageText extends StatelessWidget {
   const UVerticalImageText({
@@ -21,7 +20,6 @@ class UVerticalImageText extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    bool dark = UHelperFunctions.isDarkMode(context);
 
     return GestureDetector(
       onTap: onTap,

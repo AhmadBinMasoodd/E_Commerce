@@ -29,8 +29,27 @@ class BannersRepository extends GetxController{
           banner.imageUrl=response.data['url'];
         }
         await _db.collection(UKeys.bannersCollection).doc().set(banner.toJson());
-        print('Banners Uploaded: ${banner.targetScreen}');
       }
+    }on FirebaseAuthException catch (e) {
+      throw UFirebaseAuthException(e.code).message;
+    } on FirebaseException catch (e) {
+      throw UFirebaseException(e.code).message;
+    } on UPlatformException catch (e) {
+      throw UFirebaseException(e.code).message;
+    } catch (e) {
+      throw "Something went wrong. Please try again";
+    }
+  }
+
+  ///[FetchBanners] function to fetch the banners
+  Future<List<BannerModel>> fetchActiveBanners()async{
+    try{
+      final query=await _db.collection(UKeys.bannersCollection).where('active',isEqualTo: true).get();
+      if(query.docs.isNotEmpty){
+        List<BannerModel> banners=query.docs.map((document) =>BannerModel.fromDocument(document) ,).toList();
+        return banners;
+      }
+      return [];
     }on FirebaseAuthException catch (e) {
       throw UFirebaseAuthException(e.code).message;
     } on FirebaseException catch (e) {
