@@ -2,7 +2,7 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 
 class BrandModel {
   final String id;
-  final String image;
+  String image;
   final String name;
   final int productCount;
   final bool isFeatured;

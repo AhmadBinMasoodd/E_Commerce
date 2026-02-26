@@ -1,6 +1,7 @@
 import 'package:e_commerce/common/styles/padding.dart';
 import 'package:e_commerce/common/widgets/layouts/grid_layout.dart';
 import 'package:e_commerce/common/widgets/texts/section_heading.dart';
+import 'package:e_commerce/features/shop/models/brands_model.dart';
 import 'package:e_commerce/features/shop/screens/brands/brand_products.dart';
 import 'package:e_commerce/utils/constants/Sizes.dart';
 import 'package:flutter/material.dart';
@@ -29,7 +30,7 @@ class BrandsScreen extends StatelessWidget {
 
               //list of brands
               UGridLayout(
-                itemCount: 10, itemBuilder: (context, index) => UBrandCard(onTap: ()=>Get.to(()=>BrandProductsScreen()),),mainAxisExtent: 80,)
+                itemCount: 10, itemBuilder: (context, index) => UBrandCard(onTap: ()=>Get.to(()=>BrandProductsScreen()),brand: BrandModel.empty(),),mainAxisExtent: 80,)
 
             ],
           ),

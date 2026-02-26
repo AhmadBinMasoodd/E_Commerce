@@ -1,5 +1,6 @@
 import 'package:e_commerce/common/styles/padding.dart';
 import 'package:e_commerce/common/widgets/texts/section_heading.dart';
+import 'package:e_commerce/features/shop/controllers/brands/brands_controller.dart';
 import 'package:e_commerce/features/shop/controllers/category/category_controller.dart';
 import 'package:e_commerce/features/shop/screens/brands/brands.dart';
 import 'package:e_commerce/features/shop/screens/store/widgets/category_tab.dart';
@@ -18,6 +19,7 @@ class Store extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final controller = CategoryController.instance;
+    final brandController=Get.put(BrandsController());
     return DefaultTabController(
       length: controller.featuredCategories.length,
       child: Scaffold(
@@ -55,12 +57,15 @@ class Store extends StatelessWidget {
                                 separatorBuilder: (context, index) =>
                                     SizedBox(width: USizes.spaceBtwItems / 2),
                                 shrinkWrap: true,
-                                itemCount: 10,
+                                itemCount: brandController.featuredBrands.length,
                                 scrollDirection: Axis.horizontal,
-                                itemBuilder: (context, index) => SizedBox(
-                                  width: USizes.brandCardWidth,
-                                  child: UBrandCard(),
-                                ),
+                                itemBuilder: (context, index){
+                                  final brand=brandController.featuredBrands[index];
+                                  return  SizedBox(
+                                    width: USizes.brandCardWidth,
+                                    child: UBrandCard(brand: brand,),
+                                  );
+                                }
                               ),
                             ),
                           ],
