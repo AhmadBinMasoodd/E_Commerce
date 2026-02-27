@@ -79,7 +79,7 @@ class ULoginForm extends StatelessWidget {
           SizedBox(
             width: double.infinity,
             child: OutlinedButton(
-              onPressed: () => Get.to(SignupScreen()),
+              onPressed: () => Get.to(()=>SignupScreen()),
               child: Text(UTexts.createAccount),
             ),
           ),
