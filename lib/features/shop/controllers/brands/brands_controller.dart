@@ -24,7 +24,7 @@ class BrandsController extends GetxController {
       List<BrandModel> brands = await _repository.fetchBrands();
       allBrands.assignAll(brands);
       featuredBrands.assignAll(
-        allBrands.where((brand) => brand.isFeatured ?? false).toList(),
+        allBrands.where((brand) => brand.isFeatured ).toList(),
       );
     } catch (e) {
       USnackBarHelpers.errorSnackBar(title: 'Failed', message: e.toString());

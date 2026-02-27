@@ -1,6 +1,7 @@
 import 'package:e_commerce/common/styles/padding.dart';
 import 'package:e_commerce/common/widgets/layouts/grid_layout.dart';
 import 'package:e_commerce/common/widgets/texts/section_heading.dart';
+import 'package:e_commerce/features/shop/controllers/brands/brands_controller.dart';
 import 'package:e_commerce/features/shop/models/brands_model.dart';
 import 'package:e_commerce/features/shop/screens/brands/brand_products.dart';
 import 'package:e_commerce/utils/constants/Sizes.dart';
@@ -15,23 +16,45 @@ class BrandsScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return  Scaffold(
+    final controller = BrandsController.instance;
+    return Scaffold(
       appBar: UAppBar(
         showBackArrow: true,
-        title: Text('Brands', style: Theme.of(context).textTheme.headlineMedium),
+        title: Text(
+          'Brands',
+          style: Theme.of(context).textTheme.headlineMedium,
+        ),
       ),
       body: SingleChildScrollView(
         child: Padding(
           padding: UPadding.screenPadding,
           child: Column(
             children: [
-              USectionHeading(category: 'Brands',showActionButton: false,),
-              SizedBox(height: USizes.spaceBtwItems,),
+              USectionHeading(category: 'Brands', showActionButton: false),
+              SizedBox(height: USizes.spaceBtwItems),
 
               //list of brands
-              UGridLayout(
-                itemCount: 10, itemBuilder: (context, index) => UBrandCard(onTap: ()=>Get.to(()=>BrandProductsScreen()),brand: BrandModel.empty(),),mainAxisExtent: 80,)
+              Obx(() {
+                
+                if(controller.isLoading.value){
+                  return Center(child: CircularProgressIndicator(),);
+                }
+                if(controller.allBrands.isEmpty){
+                  return Center(child: Text('Brands Not Found'),);
+                }
+                return UGridLayout(
+                  itemCount: controller.allBrands.length,
+                  itemBuilder: (context, index) {
+                    BrandModel brand=controller.allBrands[index];
+                    return UBrandCard(
 
+                      onTap: () => Get.to(() => BrandProductsScreen()),
+                      brand: brand,
+                    );
+                  },
+                  mainAxisExtent: 80,
+                );
+              }),
             ],
           ),
         ),

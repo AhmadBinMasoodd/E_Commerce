@@ -9,8 +9,14 @@ class OrderScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: UAppBar(title: Text('My Orders',style: Theme.of(context).textTheme.headlineMedium,),),
-      body: Padding(padding: UPadding.screenPadding,child: UOrderListItems(),),
+      appBar: UAppBar(
+        title: Text(
+          'My Orders',
+          style: Theme.of(context).textTheme.headlineMedium,
+        ),
+        showBackArrow: true,
+      ),
+      body: Padding(padding: UPadding.screenPadding, child: UOrderListItems()),
     );
   }
 }

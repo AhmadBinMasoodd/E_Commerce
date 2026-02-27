@@ -1,4 +1,5 @@
 import 'package:e_commerce/common/styles/padding.dart';
+import 'package:e_commerce/common/widgets/shimmer/brands_shimmer.dart';
 import 'package:e_commerce/common/widgets/texts/section_heading.dart';
 import 'package:e_commerce/features/shop/controllers/brands/brands_controller.dart';
 import 'package:e_commerce/features/shop/controllers/category/category_controller.dart';
@@ -19,7 +20,7 @@ class Store extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final controller = CategoryController.instance;
-    final brandController=Get.put(BrandsController());
+    final brandController = Get.put(BrandsController());
     return DefaultTabController(
       length: controller.featuredCategories.length,
       child: Scaffold(
@@ -53,20 +54,31 @@ class Store extends StatelessWidget {
                             // brand card
                             SizedBox(
                               height: USizes.brandCardHeight,
-                              child: ListView.separated(
-                                separatorBuilder: (context, index) =>
-                                    SizedBox(width: USizes.spaceBtwItems / 2),
-                                shrinkWrap: true,
-                                itemCount: brandController.featuredBrands.length,
-                                scrollDirection: Axis.horizontal,
-                                itemBuilder: (context, index){
-                                  final brand=brandController.featuredBrands[index];
-                                  return  SizedBox(
-                                    width: USizes.brandCardWidth,
-                                    child: UBrandCard(brand: brand,),
-                                  );
+                              child: Obx(()
+                              {
+                                if(brandController.isLoading.value){
+                                  return UBrandsShimmer();
                                 }
-                              ),
+                                if(brandController.featuredBrands.isEmpty){
+                                  return Text('Brands Not Fount');
+                                }
+                                return ListView.separated(
+                                  separatorBuilder: (context, index) =>
+                                      SizedBox(width: USizes.spaceBtwItems / 2),
+                                  shrinkWrap: true,
+                                  itemCount:
+                                      brandController.featuredBrands.length,
+                                  scrollDirection: Axis.horizontal,
+                                  itemBuilder: (context, index) {
+                                    final brand =
+                                        brandController.featuredBrands[index];
+                                    return SizedBox(
+                                      width: USizes.brandCardWidth,
+                                      child: UBrandCard(brand: brand),
+                                    );
+                                  },
+                                );
+                              }),
                             ),
                           ],
                         ),

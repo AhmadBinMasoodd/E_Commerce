@@ -3,7 +3,6 @@ import 'package:e_commerce/common/widgets/custom_shapes/rounded_container.dart';
 import 'package:e_commerce/common/widgets/images/rounded_image.dart';
 import 'package:e_commerce/features/shop/models/brands_model.dart';
 import 'package:e_commerce/utils/constants/Sizes.dart';
-import 'package:e_commerce/utils/constants/images.dart';
 import 'package:flutter/material.dart';
 
 import '../../../utils/constants/enum.dart';
