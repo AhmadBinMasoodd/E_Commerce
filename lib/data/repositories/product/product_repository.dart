@@ -41,10 +41,11 @@ class ProductRepository extends GetxController{
             //   int index=product.images!.indexWhere((element)=>element==variation.image);
             //   variation.image=imagesUrls[index];
             // }
-
-            product.images!.clear();
-            product.images!.assignAll(imagesUrls);
           }
+
+          product.images!
+            ..clear()
+            ..addAll(imagesUrls);
         }
 
         await _db.collection(UKeys.productCollection).doc(product.id).set(product.toJson());
