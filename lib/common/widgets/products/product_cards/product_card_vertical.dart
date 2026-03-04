@@ -1,5 +1,6 @@
 import 'package:e_commerce/common/widgets/custom_shapes/rounded_container.dart';
 import 'package:e_commerce/common/widgets/icons/circular_icon.dart';
+import 'package:e_commerce/features/shop/models/product_model.dart';
 import 'package:e_commerce/features/shop/screens/product_details/product_details.dart';
 import 'package:e_commerce/utils/constants/colors.dart';
 import 'package:e_commerce/utils/helpers/helpers_function.dart';
@@ -8,15 +9,14 @@ import 'package:get/get.dart';
 import 'package:iconsax/iconsax.dart';
 import '../../../../utils/constants/Sizes.dart';
 import '../../../styles/shadow.dart';
-import '../../../../utils/constants/images.dart';
 import '../../images/rounded_image.dart';
 import '../../texts/brand_title_with_verify_icon.dart';
 import '../../texts/product_price_text.dart';
 import '../../texts/product_title_text.dart';
 
 class UProductCardVertical extends StatelessWidget {
-  const UProductCardVertical({super.key});
-
+  const UProductCardVertical({super.key, required this.product});
+  final ProductModel product;
   @override
   Widget build(BuildContext context) {
     bool dark = UHelperFunctions.isDarkMode(context);
@@ -40,7 +40,8 @@ class UProductCardVertical extends StatelessWidget {
               child: Stack(
                 ///thumbnail
                 children: [
-                  Center(child: URoundedImage(imageUrl: UImages.productImage15)),
+                  Center(child: URoundedImage(imageUrl: this.product.thumbnail,isNetworkImage: true,)),
+
                 //  discount tag
                   Positioned(
                     top: 0,

@@ -1,5 +1,6 @@
 import 'package:e_commerce/common/widgets/appbar/appbar.dart';
 import 'package:e_commerce/common/widgets/icons/circular_icon.dart';
+import 'package:e_commerce/features/shop/models/product_model.dart';
 import 'package:e_commerce/utils/constants/Sizes.dart';
 import 'package:flutter/material.dart';
 import 'package:iconsax/iconsax.dart';
@@ -33,7 +34,7 @@ class WishlistScreen extends StatelessWidget {
           child: UGridLayout(
             itemCount: 10,
             itemBuilder: (content, index) {
-              return UProductCardVertical();
+              return UProductCardVertical(product: ProductModel.empty(),);
             },
           ),
         ),

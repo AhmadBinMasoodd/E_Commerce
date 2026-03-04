@@ -61,10 +61,16 @@ class ProductRepository extends GetxController{
       throw "Something went wrong. Please try again";
     }
   }
-  /// [FetchProducts] function to fetch the list of products
-  Future<List<ProductModel>> getAllProducts()async{
-    try{
 
+
+  /// [FetchProducts] function to fetch the list of products
+  Future<List<ProductModel>> getFeaturedProducts()async{
+    try{
+      final query=await _db.collection(UKeys.productCollection).where('isFeatured',isEqualTo: true).limit(4).get();
+      if(query.docs.isNotEmpty){
+        List<ProductModel> products= query.docs.map((document)=>ProductModel.fromSnapshot(document)).toList();
+        return products;
+      }
       return [];
     }on FirebaseAuthException catch (e) {
       throw UFirebaseAuthException(e.code).message;
