@@ -1,5 +1,6 @@
 import 'package:e_commerce/common/widgets/custom_shapes/rounded_container.dart';
 import 'package:e_commerce/common/widgets/icons/circular_icon.dart';
+import 'package:e_commerce/features/shop/controllers/products/product_controller.dart';
 import 'package:e_commerce/features/shop/models/product_model.dart';
 import 'package:e_commerce/features/shop/screens/product_details/product_details.dart';
 import 'package:e_commerce/utils/constants/colors.dart';
@@ -20,6 +21,9 @@ class UProductCardVertical extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     bool dark = UHelperFunctions.isDarkMode(context);
+    final controller=ProductController.instance;
+    String? salesPercentage=controller.calculateSalePercentage(product.price, product.salePrice);
+
     return GestureDetector(
       onTap: ()=>Get.to(()=>ProductDetailsScreen()),
       child: Container(
@@ -43,6 +47,7 @@ class UProductCardVertical extends StatelessWidget {
                   Center(child: URoundedImage(imageUrl: this.product.thumbnail,isNetworkImage: true,)),
 
                 //  discount tag
+                  if(salesPercentage!=null)
                   Positioned(
                     top: 0,
                     child: URoundedContainer(
@@ -53,7 +58,7 @@ class UProductCardVertical extends StatelessWidget {
                         vertical: USizes.xs,
                       ),
                       child: Text(
-                        '20%',
+                        salesPercentage,
                         style: Theme.of(
                           context,
                         ).textTheme.labelLarge!.apply(color: UColors.black),
@@ -76,9 +81,12 @@ class UProductCardVertical extends StatelessWidget {
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
-                  UProductTitleText(title: 'Blue Bata Shoes',smallSize: true,),
+                  ///product title
+                  UProductTitleText(title: product.title,smallSize: true,),
                   SizedBox(height: USizes.spaceBtwItems/2,),
-                  UBrandTitleWithVerifyIcon(title: 'bata'),
+
+                  ///product brand
+                  UBrandTitleWithVerifyIcon(title: product.brand!.name),
                 ],
               ),
             ),
@@ -90,7 +98,7 @@ class UProductCardVertical extends StatelessWidget {
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
                 Padding(padding: const EdgeInsets.only(left: USizes.sm),
-                  child: UProductPriceText(price: '76'),
+                  child: UProductPriceText(price: controller.getProductprice(product)),
                 ),
                 Container(
                   width: USizes.iconMd*1.02,
