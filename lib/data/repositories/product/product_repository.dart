@@ -20,8 +20,12 @@ class ProductRepository extends GetxController{
 
   /// [uploadProducts] function to upload the list of products
   Future<void> uploadProducts(List<ProductModel> products)async{
+
     try{
       for(ProductModel product in products){
+
+        final Map<String,String> uploadImageMap={};
+
         File thumbnailFile=await UHelperFunctions.assetToFile(product.thumbnail);
         dio.Response response=await _cloudinaryServices.uploadImage(thumbnailFile, UKeys.productsFolder);
         if(response.statusCode==200){
@@ -35,8 +39,27 @@ class ProductRepository extends GetxController{
             File imageFile=await UHelperFunctions.assetToFile(image);
             dio.Response response=await _cloudinaryServices.uploadImage(imageFile, UKeys.productsFolder);
             if(response.statusCode==200){
-              imagesUrls.add(response.data['url']);
+              String url=response.data['url'];
+              uploadImageMap[product.thumbnail]=url;
+              product.thumbnail=url;
             }
+
+            // if(product.productVariations!=null&& product.productVariations!.isNotEmpty){
+            //   for(int i=0;i<product.images!.length;i++){
+            //     uploadImageMap[product.images![i]]=imagesUrls[i];
+            //   }
+            //
+            //   for(final variation in product.productVariations!){
+            //     final match=uploadImageMap.entries.firstWhere(
+            //         (entry)=>entry.key==variation.image,
+            //         orElse: ()=>const MapEntry('', ''),
+            //     );
+            //     if(match.key.isNotEmpty){
+            //       variation.image=match.value;
+            //     }
+            //   }
+            // }
+
             // for(final variation in product.productVariations!){
             //   int index=product.images!.indexWhere((element)=>element==variation.image);
             //   variation.image=imagesUrls[index];

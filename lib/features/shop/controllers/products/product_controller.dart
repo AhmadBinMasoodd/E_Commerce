@@ -67,7 +67,7 @@ class ProductController extends GetxController {
         return largestPrice.toStringAsFixed(0);
       }
       else{
-        return '${UTexts.currency}{largestPrice.toStringAsFixed(0)} -  ${UTexts.currency}${smallestPrice.toStringAsFixed(0)}';
+        return '${UTexts.currency}${largestPrice.toStringAsFixed(0)} -  ${UTexts.currency}${smallestPrice.toStringAsFixed(0)}';
       }
     }
   }
